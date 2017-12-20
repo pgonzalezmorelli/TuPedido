@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TuPedido.Views.LoginView"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+             xmlns:viewModelBase="clr-namespace:TuPedido.ViewModels;assembly=TuPedido"
+             viewModelBase:ViewModelAutoWire.AutoWireViewModel="true">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="20, 40, 20, 20" />
+            <On Platform="Android, WinPhone, Windows" Value="20" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center">
+            <Label 
+                Text="Willkommen" 
+                HorizontalOptions="Center"
+                Style="{StaticResource Title}" />
+            <syncfusion:SfAutoComplete
+                HorizontalOptions="FillAndExpand"
+                Margin="0,20"
+                HeightRequest="40" 
+                AutoCompleteMode="SuggestAppend"
+                SuggestionMode="Contains"
+                Watermark="Who are you?"
+                DataSource="{Binding Users}"
+                DisplayMemberPath="Name"
+                SelectedItem="{Binding SelectedUser, Mode=TwoWay}" />
+            <Button 
+                Text="Login!" 
+                HorizontalOptions="FillAndExpand"
+                Margin="0,0,0,20"
+                Command="{Binding LoginCommand}" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+            <Label 
+                HorizontalOptions="FillAndExpand"
+                Text="{Binding ErrorMessage}"
+                Style="{StaticResource Error}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

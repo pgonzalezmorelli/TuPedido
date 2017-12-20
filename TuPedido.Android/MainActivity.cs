@@ -1,11 +1,8 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Splat;
 
 namespace TuPedido.Droid
 {
@@ -20,7 +17,15 @@ namespace TuPedido.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            ResolveDependencies();
             LoadApplication(new App());
+        }
+
+        private void ResolveDependencies()
+        {
+            DependencyContainer.Register(new Helpers.FileHelper(), typeof(TuPedido.Helpers.IFileHelper));
+            DependencyContainer.RegisterDependencies();
         }
     }
 }

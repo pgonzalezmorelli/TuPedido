@@ -26,6 +26,30 @@ namespace TuPedido.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Splat.Resource.String.library_name = global::TuPedido.Droid.Resource.String.library_name;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.layoutManager = global::TuPedido.Droid.Resource.Attribute.layoutManager;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.reverseLayout = global::TuPedido.Droid.Resource.Attribute.reverseLayout;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.spanCount = global::TuPedido.Droid.Resource.Attribute.spanCount;
+			global::Com.Syncfusion.Autocomplete.Resource.Attribute.stackFromEnd = global::TuPedido.Droid.Resource.Attribute.stackFromEnd;
+			global::Com.Syncfusion.Autocomplete.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::TuPedido.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::Com.Syncfusion.Autocomplete.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::TuPedido.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::Com.Syncfusion.Autocomplete.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::TuPedido.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::Com.Syncfusion.Autocomplete.Resource.Drawable.sfclosebutton = global::TuPedido.Droid.Resource.Drawable.sfclosebutton;
+			global::Com.Syncfusion.Autocomplete.Resource.Drawable.styleinfo = global::TuPedido.Droid.Resource.Drawable.styleinfo;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.Itemname = global::TuPedido.Droid.Resource.Id.Itemname;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.icon = global::TuPedido.Droid.Resource.Id.icon;
+			global::Com.Syncfusion.Autocomplete.Resource.Id.item_touch_helper_previous_elevation = global::TuPedido.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::Com.Syncfusion.Autocomplete.Resource.Layout.CustomizedView = global::TuPedido.Droid.Resource.Layout.CustomizedView;
+			global::Com.Syncfusion.Autocomplete.Resource.Layout.CustomizedView1 = global::TuPedido.Droid.Resource.Layout.CustomizedView1;
+			global::Com.Syncfusion.Autocomplete.Resource.Layout.sfautocomplete_layout = global::TuPedido.Droid.Resource.Layout.sfautocomplete_layout;
+			global::Com.Syncfusion.Autocomplete.Resource.String.library_name = global::TuPedido.Droid.Resource.String.library_name;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView = global::TuPedido.Droid.Resource.Styleable.RecyclerView;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_android_descendantFocusability = global::TuPedido.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_android_orientation = global::TuPedido.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_layoutManager = global::TuPedido.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_reverseLayout = global::TuPedido.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_spanCount = global::TuPedido.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::Com.Syncfusion.Autocomplete.Resource.Styleable.RecyclerView_stackFromEnd = global::TuPedido.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::TuPedido.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -2330,26 +2354,26 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020130
-			public const int avd_hide_password_1 = 2130837808;
-			
-			// aapt resource value: 0x7f020131
-			public const int avd_hide_password_2 = 2130837809;
-			
 			// aapt resource value: 0x7f020132
-			public const int avd_hide_password_3 = 2130837810;
+			public const int avd_hide_password_1 = 2130837810;
+			
+			// aapt resource value: 0x7f020133
+			public const int avd_hide_password_2 = 2130837811;
+			
+			// aapt resource value: 0x7f020134
+			public const int avd_hide_password_3 = 2130837812;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020133
-			public const int avd_show_password_1 = 2130837811;
-			
-			// aapt resource value: 0x7f020134
-			public const int avd_show_password_2 = 2130837812;
-			
 			// aapt resource value: 0x7f020135
-			public const int avd_show_password_3 = 2130837813;
+			public const int avd_show_password_1 = 2130837813;
+			
+			// aapt resource value: 0x7f020136
+			public const int avd_show_password_2 = 2130837814;
+			
+			// aapt resource value: 0x7f020137
+			public const int avd_show_password_3 = 2130837815;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2990,11 +3014,11 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f020129
 			public const int notification_icon_background = 2130837801;
 			
-			// aapt resource value: 0x7f02012e
-			public const int notification_template_icon_bg = 2130837806;
+			// aapt resource value: 0x7f020130
+			public const int notification_template_icon_bg = 2130837808;
 			
-			// aapt resource value: 0x7f02012f
-			public const int notification_template_icon_low_bg = 2130837807;
+			// aapt resource value: 0x7f020131
+			public const int notification_template_icon_low_bg = 2130837809;
 			
 			// aapt resource value: 0x7f02012a
 			public const int notification_tile_bg = 2130837802;
@@ -3003,10 +3027,16 @@ namespace TuPedido.Droid
 			public const int notify_panel_notification_icon_bg = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int tooltip_frame_dark = 2130837804;
+			public const int sfclosebutton = 2130837804;
 			
 			// aapt resource value: 0x7f02012d
-			public const int tooltip_frame_light = 2130837805;
+			public const int styleinfo = 2130837805;
+			
+			// aapt resource value: 0x7f02012e
+			public const int tooltip_frame_dark = 2130837806;
+			
+			// aapt resource value: 0x7f02012f
+			public const int tooltip_frame_light = 2130837807;
 			
 			static Drawable()
 			{
@@ -3030,6 +3060,9 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080033
 			public const int FUNCTION = 2131230771;
 			
+			// aapt resource value: 0x7f08008a
+			public const int Itemname = 2131230858;
+			
 			// aapt resource value: 0x7f080034
 			public const int META = 2131230772;
 			
@@ -3039,8 +3072,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080036
 			public const int SYM = 2131230774;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int action0 = 2131230901;
+			// aapt resource value: 0x7f0800b6
+			public const int action0 = 2131230902;
 			
 			// aapt resource value: 0x7f08007b
 			public const int action_bar = 2131230843;
@@ -3063,17 +3096,17 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080059
 			public const int action_bar_title = 2131230809;
 			
-			// aapt resource value: 0x7f0800b2
-			public const int action_container = 2131230898;
+			// aapt resource value: 0x7f0800b3
+			public const int action_container = 2131230899;
 			
 			// aapt resource value: 0x7f08007c
 			public const int action_context_bar = 2131230844;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int action_divider = 2131230905;
+			// aapt resource value: 0x7f0800ba
+			public const int action_divider = 2131230906;
 			
-			// aapt resource value: 0x7f0800b3
-			public const int action_image = 2131230899;
+			// aapt resource value: 0x7f0800b4
+			public const int action_image = 2131230900;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -3090,11 +3123,11 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08005b
 			public const int action_mode_close_button = 2131230811;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int action_text = 2131230900;
+			// aapt resource value: 0x7f0800b5
+			public const int action_text = 2131230901;
 			
-			// aapt resource value: 0x7f0800c2
-			public const int actions = 2131230914;
+			// aapt resource value: 0x7f0800c3
+			public const int actions = 2131230915;
 			
 			// aapt resource value: 0x7f08005c
 			public const int activity_chooser_view_content = 2131230812;
@@ -3129,8 +3162,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080062
 			public const int buttonPanel = 2131230818;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int cancel_action = 2131230902;
+			// aapt resource value: 0x7f0800b7
+			public const int cancel_action = 2131230903;
 			
 			// aapt resource value: 0x7f080044
 			public const int center = 2131230788;
@@ -3144,8 +3177,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080072
 			public const int checkbox = 2131230834;
 			
-			// aapt resource value: 0x7f0800be
-			public const int chronometer = 2131230910;
+			// aapt resource value: 0x7f0800bf
+			public const int chronometer = 2131230911;
 			
 			// aapt resource value: 0x7f08004d
 			public const int clip_horizontal = 2131230797;
@@ -3156,14 +3189,14 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080038
 			public const int collapseActionView = 2131230776;
 			
-			// aapt resource value: 0x7f08008c
-			public const int container = 2131230860;
+			// aapt resource value: 0x7f08008d
+			public const int container = 2131230861;
 			
 			// aapt resource value: 0x7f080065
 			public const int contentPanel = 2131230821;
 			
-			// aapt resource value: 0x7f08008d
-			public const int coordinator = 2131230861;
+			// aapt resource value: 0x7f08008e
+			public const int coordinator = 2131230862;
 			
 			// aapt resource value: 0x7f08006c
 			public const int custom = 2131230828;
@@ -3177,20 +3210,20 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08005f
 			public const int default_activity_button = 2131230815;
 			
-			// aapt resource value: 0x7f08008f
-			public const int design_bottom_sheet = 2131230863;
+			// aapt resource value: 0x7f080090
+			public const int design_bottom_sheet = 2131230864;
+			
+			// aapt resource value: 0x7f080097
+			public const int design_menu_item_action_area = 2131230871;
 			
 			// aapt resource value: 0x7f080096
-			public const int design_menu_item_action_area = 2131230870;
+			public const int design_menu_item_action_area_stub = 2131230870;
 			
 			// aapt resource value: 0x7f080095
-			public const int design_menu_item_action_area_stub = 2131230869;
+			public const int design_menu_item_text = 2131230869;
 			
 			// aapt resource value: 0x7f080094
-			public const int design_menu_item_text = 2131230868;
-			
-			// aapt resource value: 0x7f080093
-			public const int design_navigation_view = 2131230867;
+			public const int design_navigation_view = 2131230868;
 			
 			// aapt resource value: 0x7f08001f
 			public const int disableHome = 2131230751;
@@ -3201,8 +3234,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08002f
 			public const int end = 2131230767;
 			
-			// aapt resource value: 0x7f0800c4
-			public const int end_padder = 2131230916;
+			// aapt resource value: 0x7f0800c5
+			public const int end_padder = 2131230917;
 			
 			// aapt resource value: 0x7f08003e
 			public const int enterAlways = 2131230782;
@@ -3246,8 +3279,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080061
 			public const int icon = 2131230817;
 			
-			// aapt resource value: 0x7f0800c3
-			public const int icon_group = 2131230915;
+			// aapt resource value: 0x7f0800c4
+			public const int icon_group = 2131230916;
 			
 			// aapt resource value: 0x7f080039
 			public const int ifRoom = 2131230777;
@@ -3255,8 +3288,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08005e
 			public const int image = 2131230814;
 			
-			// aapt resource value: 0x7f0800bf
-			public const int info = 2131230911;
+			// aapt resource value: 0x7f0800c0
+			public const int info = 2131230912;
 			
 			// aapt resource value: 0x7f080058
 			public const int italic = 2131230808;
@@ -3264,8 +3297,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
 			
-			// aapt resource value: 0x7f08008b
-			public const int largeLabel = 2131230859;
+			// aapt resource value: 0x7f08008c
+			public const int largeLabel = 2131230860;
 			
 			// aapt resource value: 0x7f080048
 			public const int left = 2131230792;
@@ -3282,14 +3315,14 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080060
 			public const int list_item = 2131230816;
 			
-			// aapt resource value: 0x7f0800c9
-			public const int masked = 2131230921;
+			// aapt resource value: 0x7f0800ca
+			public const int masked = 2131230922;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int media_actions = 2131230904;
+			// aapt resource value: 0x7f0800b9
+			public const int media_actions = 2131230905;
 			
-			// aapt resource value: 0x7f0800c7
-			public const int message = 2131230919;
+			// aapt resource value: 0x7f0800c8
+			public const int message = 2131230920;
 			
 			// aapt resource value: 0x7f080030
 			public const int middle = 2131230768;
@@ -3297,86 +3330,86 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080052
 			public const int mini = 2131230802;
 			
-			// aapt resource value: 0x7f0800a4
-			public const int mr_art = 2131230884;
-			
-			// aapt resource value: 0x7f080099
-			public const int mr_chooser_list = 2131230873;
-			
-			// aapt resource value: 0x7f08009c
-			public const int mr_chooser_route_desc = 2131230876;
+			// aapt resource value: 0x7f0800a5
+			public const int mr_art = 2131230885;
 			
 			// aapt resource value: 0x7f08009a
-			public const int mr_chooser_route_icon = 2131230874;
-			
-			// aapt resource value: 0x7f08009b
-			public const int mr_chooser_route_name = 2131230875;
-			
-			// aapt resource value: 0x7f080098
-			public const int mr_chooser_title = 2131230872;
-			
-			// aapt resource value: 0x7f0800a1
-			public const int mr_close = 2131230881;
-			
-			// aapt resource value: 0x7f0800a7
-			public const int mr_control_divider = 2131230887;
-			
-			// aapt resource value: 0x7f0800ad
-			public const int mr_control_playback_ctrl = 2131230893;
-			
-			// aapt resource value: 0x7f0800b0
-			public const int mr_control_subtitle = 2131230896;
-			
-			// aapt resource value: 0x7f0800af
-			public const int mr_control_title = 2131230895;
-			
-			// aapt resource value: 0x7f0800ae
-			public const int mr_control_title_container = 2131230894;
-			
-			// aapt resource value: 0x7f0800a2
-			public const int mr_custom_control = 2131230882;
-			
-			// aapt resource value: 0x7f0800a3
-			public const int mr_default_control = 2131230883;
-			
-			// aapt resource value: 0x7f08009e
-			public const int mr_dialog_area = 2131230878;
+			public const int mr_chooser_list = 2131230874;
 			
 			// aapt resource value: 0x7f08009d
-			public const int mr_expandable_area = 2131230877;
+			public const int mr_chooser_route_desc = 2131230877;
 			
-			// aapt resource value: 0x7f0800b1
-			public const int mr_group_expand_collapse = 2131230897;
+			// aapt resource value: 0x7f08009b
+			public const int mr_chooser_route_icon = 2131230875;
 			
-			// aapt resource value: 0x7f0800a5
-			public const int mr_media_main_control = 2131230885;
+			// aapt resource value: 0x7f08009c
+			public const int mr_chooser_route_name = 2131230876;
 			
-			// aapt resource value: 0x7f0800a0
-			public const int mr_name = 2131230880;
+			// aapt resource value: 0x7f080099
+			public const int mr_chooser_title = 2131230873;
 			
-			// aapt resource value: 0x7f0800a6
-			public const int mr_playback_control = 2131230886;
-			
-			// aapt resource value: 0x7f08009f
-			public const int mr_title_bar = 2131230879;
+			// aapt resource value: 0x7f0800a2
+			public const int mr_close = 2131230882;
 			
 			// aapt resource value: 0x7f0800a8
-			public const int mr_volume_control = 2131230888;
+			public const int mr_control_divider = 2131230888;
+			
+			// aapt resource value: 0x7f0800ae
+			public const int mr_control_playback_ctrl = 2131230894;
+			
+			// aapt resource value: 0x7f0800b1
+			public const int mr_control_subtitle = 2131230897;
+			
+			// aapt resource value: 0x7f0800b0
+			public const int mr_control_title = 2131230896;
+			
+			// aapt resource value: 0x7f0800af
+			public const int mr_control_title_container = 2131230895;
+			
+			// aapt resource value: 0x7f0800a3
+			public const int mr_custom_control = 2131230883;
+			
+			// aapt resource value: 0x7f0800a4
+			public const int mr_default_control = 2131230884;
+			
+			// aapt resource value: 0x7f08009f
+			public const int mr_dialog_area = 2131230879;
+			
+			// aapt resource value: 0x7f08009e
+			public const int mr_expandable_area = 2131230878;
+			
+			// aapt resource value: 0x7f0800b2
+			public const int mr_group_expand_collapse = 2131230898;
+			
+			// aapt resource value: 0x7f0800a6
+			public const int mr_media_main_control = 2131230886;
+			
+			// aapt resource value: 0x7f0800a1
+			public const int mr_name = 2131230881;
+			
+			// aapt resource value: 0x7f0800a7
+			public const int mr_playback_control = 2131230887;
+			
+			// aapt resource value: 0x7f0800a0
+			public const int mr_title_bar = 2131230880;
 			
 			// aapt resource value: 0x7f0800a9
-			public const int mr_volume_group_list = 2131230889;
+			public const int mr_volume_control = 2131230889;
 			
-			// aapt resource value: 0x7f0800ab
-			public const int mr_volume_item_icon = 2131230891;
+			// aapt resource value: 0x7f0800aa
+			public const int mr_volume_group_list = 2131230890;
 			
 			// aapt resource value: 0x7f0800ac
-			public const int mr_volume_slider = 2131230892;
+			public const int mr_volume_item_icon = 2131230892;
+			
+			// aapt resource value: 0x7f0800ad
+			public const int mr_volume_slider = 2131230893;
 			
 			// aapt resource value: 0x7f080026
 			public const int multiply = 2131230758;
 			
-			// aapt resource value: 0x7f080092
-			public const int navigation_header_container = 2131230866;
+			// aapt resource value: 0x7f080093
+			public const int navigation_header_container = 2131230867;
 			
 			// aapt resource value: 0x7f08003a
 			public const int never = 2131230778;
@@ -3387,14 +3420,14 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08001d
 			public const int normal = 2131230749;
 			
-			// aapt resource value: 0x7f0800c1
-			public const int notification_background = 2131230913;
+			// aapt resource value: 0x7f0800c2
+			public const int notification_background = 2131230914;
+			
+			// aapt resource value: 0x7f0800bc
+			public const int notification_main_column = 2131230908;
 			
 			// aapt resource value: 0x7f0800bb
-			public const int notification_main_column = 2131230907;
-			
-			// aapt resource value: 0x7f0800ba
-			public const int notification_main_column_container = 2131230906;
+			public const int notification_main_column_container = 2131230907;
 			
 			// aapt resource value: 0x7f08004b
 			public const int parallax = 2131230795;
@@ -3420,11 +3453,11 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080049
 			public const int right = 2131230793;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int right_icon = 2131230912;
+			// aapt resource value: 0x7f0800c1
+			public const int right_icon = 2131230913;
 			
-			// aapt resource value: 0x7f0800bc
-			public const int right_side = 2131230908;
+			// aapt resource value: 0x7f0800bd
+			public const int right_side = 2131230909;
 			
 			// aapt resource value: 0x7f08000c
 			public const int save_image_matrix = 2131230732;
@@ -3498,17 +3531,17 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080024
 			public const int showTitle = 2131230756;
 			
-			// aapt resource value: 0x7f0800c5
-			public const int sliding_tabs = 2131230917;
+			// aapt resource value: 0x7f0800c6
+			public const int sliding_tabs = 2131230918;
 			
-			// aapt resource value: 0x7f08008a
-			public const int smallLabel = 2131230858;
+			// aapt resource value: 0x7f08008b
+			public const int smallLabel = 2131230859;
+			
+			// aapt resource value: 0x7f080092
+			public const int snackbar_action = 2131230866;
 			
 			// aapt resource value: 0x7f080091
-			public const int snackbar_action = 2131230865;
-			
-			// aapt resource value: 0x7f080090
-			public const int snackbar_text = 2131230864;
+			public const int snackbar_text = 2131230865;
 			
 			// aapt resource value: 0x7f080042
 			public const int snap = 2131230786;
@@ -3531,8 +3564,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08004a
 			public const int start = 2131230794;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int status_bar_latest_event_content = 2131230903;
+			// aapt resource value: 0x7f0800b8
+			public const int status_bar_latest_event_content = 2131230904;
 			
 			// aapt resource value: 0x7f080075
 			public const int submenuarrow = 2131230837;
@@ -3555,8 +3588,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080068
 			public const int textSpacerNoTitle = 2131230824;
 			
-			// aapt resource value: 0x7f080097
-			public const int text_input_password_toggle = 2131230871;
+			// aapt resource value: 0x7f080098
+			public const int text_input_password_toggle = 2131230872;
 			
 			// aapt resource value: 0x7f080014
 			public const int textinput_counter = 2131230740;
@@ -3564,8 +3597,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080015
 			public const int textinput_error = 2131230741;
 			
-			// aapt resource value: 0x7f0800bd
-			public const int time = 2131230909;
+			// aapt resource value: 0x7f0800be
+			public const int time = 2131230910;
 			
 			// aapt resource value: 0x7f08001b
 			public const int title = 2131230747;
@@ -3576,8 +3609,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08006e
 			public const int title_template = 2131230830;
 			
-			// aapt resource value: 0x7f0800c6
-			public const int toolbar = 2131230918;
+			// aapt resource value: 0x7f0800c7
+			public const int toolbar = 2131230919;
 			
 			// aapt resource value: 0x7f08003d
 			public const int top = 2131230781;
@@ -3585,8 +3618,8 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f08006d
 			public const int topPanel = 2131230829;
 			
-			// aapt resource value: 0x7f08008e
-			public const int touch_outside = 2131230862;
+			// aapt resource value: 0x7f08008f
+			public const int touch_outside = 2131230863;
 			
 			// aapt resource value: 0x7f08000f
 			public const int transition_current_scene = 2131230735;
@@ -3615,11 +3648,11 @@ namespace TuPedido.Droid
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800c8
-			public const int visible = 2131230920;
+			// aapt resource value: 0x7f0800c9
+			public const int visible = 2131230921;
 			
-			// aapt resource value: 0x7f0800aa
-			public const int volume_item_container = 2131230890;
+			// aapt resource value: 0x7f0800ab
+			public const int volume_item_container = 2131230891;
 			
 			// aapt resource value: 0x7f08003b
 			public const int withText = 2131230779;
@@ -3793,130 +3826,139 @@ namespace TuPedido.Droid
 			public const int abc_select_dialog_material = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int design_bottom_navigation_item = 2130903067;
+			public const int CustomizedView = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int design_bottom_sheet_dialog = 2130903068;
+			public const int CustomizedView1 = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int design_layout_snackbar = 2130903069;
+			public const int design_bottom_navigation_item = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int design_layout_snackbar_include = 2130903070;
+			public const int design_bottom_sheet_dialog = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int design_layout_tab_icon = 2130903071;
+			public const int design_layout_snackbar = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int design_layout_tab_text = 2130903072;
+			public const int design_layout_snackbar_include = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int design_menu_item_action_area = 2130903073;
+			public const int design_layout_tab_icon = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int design_navigation_item = 2130903074;
+			public const int design_layout_tab_text = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int design_navigation_item_header = 2130903075;
+			public const int design_menu_item_action_area = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int design_navigation_item_separator = 2130903076;
+			public const int design_navigation_item = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int design_navigation_item_subheader = 2130903077;
+			public const int design_navigation_item_header = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int design_navigation_menu = 2130903078;
+			public const int design_navigation_item_separator = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int design_navigation_menu_item = 2130903079;
+			public const int design_navigation_item_subheader = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int design_text_input_password_icon = 2130903080;
+			public const int design_navigation_menu = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int mr_chooser_dialog = 2130903081;
+			public const int design_navigation_menu_item = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int mr_chooser_list_item = 2130903082;
+			public const int design_text_input_password_icon = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int mr_controller_material_dialog_b = 2130903083;
+			public const int mr_chooser_dialog = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int mr_controller_volume_item = 2130903084;
+			public const int mr_chooser_list_item = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int mr_playback_control = 2130903085;
+			public const int mr_controller_material_dialog_b = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int mr_volume_control = 2130903086;
+			public const int mr_controller_volume_item = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int notification_action = 2130903087;
+			public const int mr_playback_control = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int notification_action_tombstone = 2130903088;
+			public const int mr_volume_control = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int notification_media_action = 2130903089;
+			public const int notification_action = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int notification_media_cancel_action = 2130903090;
+			public const int notification_action_tombstone = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int notification_template_big_media = 2130903091;
+			public const int notification_media_action = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int notification_template_big_media_custom = 2130903092;
+			public const int notification_media_cancel_action = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int notification_template_big_media_narrow = 2130903093;
+			public const int notification_template_big_media = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int notification_template_big_media_narrow_custom = 2130903094;
+			public const int notification_template_big_media_custom = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int notification_template_custom_big = 2130903095;
+			public const int notification_template_big_media_narrow = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int notification_template_icon_group = 2130903096;
+			public const int notification_template_big_media_narrow_custom = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int notification_template_lines_media = 2130903097;
+			public const int notification_template_custom_big = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int notification_template_media = 2130903098;
+			public const int notification_template_icon_group = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int notification_template_media_custom = 2130903099;
+			public const int notification_template_lines_media = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int notification_template_part_chronometer = 2130903100;
+			public const int notification_template_media = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int notification_template_part_time = 2130903101;
+			public const int notification_template_media_custom = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int select_dialog_item_material = 2130903102;
+			public const int notification_template_part_chronometer = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int select_dialog_multichoice_material = 2130903103;
+			public const int notification_template_part_time = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int select_dialog_singlechoice_material = 2130903104;
+			public const int select_dialog_item_material = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int support_simple_spinner_dropdown_item = 2130903105;
+			public const int select_dialog_multichoice_material = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int Tabbar = 2130903106;
+			public const int select_dialog_singlechoice_material = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int Toolbar = 2130903107;
+			public const int sfautocomplete_layout = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int tooltip = 2130903108;
+			public const int support_simple_spinner_dropdown_item = 2130903108;
+			
+			// aapt resource value: 0x7f030045
+			public const int Tabbar = 2130903109;
+			
+			// aapt resource value: 0x7f030046
+			public const int Toolbar = 2130903110;
+			
+			// aapt resource value: 0x7f030047
+			public const int tooltip = 2130903111;
 			
 			static Layout()
 			{
@@ -4032,6 +4074,9 @@ namespace TuPedido.Droid
 			
 			// aapt resource value: 0x7f090038
 			public const int character_counter_pattern = 2131296312;
+			
+			// aapt resource value: 0x7f09003e
+			public const int library_name = 2131296318;
 			
 			// aapt resource value: 0x7f090000
 			public const int mr_button_content_description = 2131296256;
