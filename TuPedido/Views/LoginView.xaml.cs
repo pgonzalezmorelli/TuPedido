@@ -9,6 +9,7 @@ namespace TuPedido.Views
         public LoginView()
 		{
 			InitializeComponent ();
+            this.autocomplete.SelectedItem = null;
 		}
 	}
 }

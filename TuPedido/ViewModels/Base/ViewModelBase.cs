@@ -18,14 +18,16 @@ namespace TuPedido.ViewModels
         private readonly INavigationService navigationService;
         private bool isBusy;
         private string errorMessage;
+        private bool canGoBack;
 
         public bool IsBusy { set { SetPropertyValue(ref isBusy, value); } get { return isBusy; } }
         public string ErrorMessage { set { SetPropertyValue(ref errorMessage, value); } get { return errorMessage; } }
+        public bool CanGoBack { set { SetPropertyValue(ref canGoBack, value); } get { return canGoBack; } }
         public string Username => App.CurrentUser?.Name;
 
         public ICommand LogoutCommand { get; set; }
         public ICommand GoBackCommand { get; set; }
-        
+
         #endregion
 
         #region PropertyChanged
@@ -109,9 +111,10 @@ namespace TuPedido.ViewModels
             });
         }
 
-        public virtual Task InitializeAsync(object navigationData)
+        public virtual async Task InitializeAsync(object navigationData)
         {
-            return Task.FromResult(false);
+            canGoBack = await navigationService.CanGoBackAsync();
+            await Task.FromResult(false);
         }
 
         protected async Task TryExecute(Func<Task> execute, Func<Task> onError = null)

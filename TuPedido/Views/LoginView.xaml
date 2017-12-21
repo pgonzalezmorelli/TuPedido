@@ -18,6 +18,7 @@
                 HorizontalOptions="Center"
                 Style="{StaticResource Title}" />
             <syncfusion:SfAutoComplete
+                x:Name="autocomplete"
                 HorizontalOptions="FillAndExpand"
                 Margin="0,20"
                 HeightRequest="40" 

@@ -10,5 +10,7 @@ namespace TuPedido.Services
         Task NavigateToAsync(Page page);
 
         Task BackAsync();
+
+        Task<bool> CanGoBackAsync();
     }
 }
