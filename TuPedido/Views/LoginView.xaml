@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TuPedido.Views.LoginView"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
+             xmlns:ext="clr-namespace:TuPedido.Extensions;assembly=TuPedido"
              xmlns:viewModelBase="clr-namespace:TuPedido.ViewModels;assembly=TuPedido"
              viewModelBase:ViewModelAutoWire.AutoWireViewModel="true">
     <ContentPage.Padding>
@@ -11,33 +12,47 @@
             <On Platform="Android, WinPhone, Windows" Value="20" />
         </OnPlatform>
     </ContentPage.Padding>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ext:NegateConverter x:Key="negateConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center">
+        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
             <Label 
+                Grid.Row="0" 
+                Grid.Column="0"
                 Text="Willkommen" 
                 HorizontalOptions="Center"
                 Style="{StaticResource Title}" />
-            <syncfusion:SfAutoComplete
-                x:Name="autocomplete"
-                HorizontalOptions="FillAndExpand"
-                Margin="0,20"
-                HeightRequest="40" 
-                AutoCompleteMode="SuggestAppend"
-                SuggestionMode="Contains"
-                Watermark="Who are you?"
-                DataSource="{Binding Users}"
-                DisplayMemberPath="Name"
-                SelectedItem="{Binding SelectedUser, Mode=TwoWay}" />
-            <Button 
-                Text="Login!" 
-                HorizontalOptions="FillAndExpand"
-                Margin="0,0,0,20"
-                Command="{Binding LoginCommand}" />
-            <ActivityIndicator IsRunning="{Binding IsBusy}" />
-            <Label 
-                HorizontalOptions="FillAndExpand"
-                Text="{Binding ErrorMessage}"
-                Style="{StaticResource Error}" />
-        </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsBusy, Converter={StaticResource negateConverter}}" >
+                <syncfusion:SfAutoComplete
+                    x:Name="autocomplete"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,20"
+                    HeightRequest="40" 
+                    AutoCompleteMode="SuggestAppend"
+                    SuggestionMode="Contains"
+                    Watermark="Who are you?"
+                    DataSource="{Binding Users}"
+                    DisplayMemberPath="Name"
+                    SelectedItem="{Binding SelectedUser, Mode=TwoWay}" />
+                <Button 
+                    Text="Login!" 
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,0,0,20"
+                    Command="{Binding LoginCommand}" />
+                <Label 
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding ErrorMessage}"
+                    Style="{StaticResource Error}" />
+            </StackLayout>
+            <ActivityIndicator Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

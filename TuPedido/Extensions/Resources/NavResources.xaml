@@ -44,8 +44,8 @@
     <ControlTemplate x:Key="NavPageTemplate" >
         <Grid Style="{StaticResource Nav}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="35"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <BoxView Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="5" Style="{StaticResource NavBar}"/>
