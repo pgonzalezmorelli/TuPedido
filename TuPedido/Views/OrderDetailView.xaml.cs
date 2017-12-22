@@ -7,7 +7,7 @@ namespace TuPedido.Views
 		public OrderDetailView()
 		{
 			InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-		}
+            this.InitializeToolbar();
+        }
 	}
 }

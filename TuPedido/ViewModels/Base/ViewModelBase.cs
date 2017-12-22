@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using TuPedido.Managers;
 using TuPedido.Services;
 using Xamarin.Forms;
@@ -18,15 +17,9 @@ namespace TuPedido.ViewModels
         private readonly INavigationService navigationService;
         private bool isBusy;
         private string errorMessage;
-        private bool canGoBack;
-
+        
         public bool IsBusy { set { SetPropertyValue(ref isBusy, value); } get { return isBusy; } }
         public string ErrorMessage { set { SetPropertyValue(ref errorMessage, value); } get { return errorMessage; } }
-        public bool CanGoBack { set { SetPropertyValue(ref canGoBack, value); } get { return canGoBack; } }
-        public string Username => App.CurrentUser?.Name;
-
-        public ICommand LogoutCommand { get; set; }
-        public ICommand GoBackCommand { get; set; }
 
         #endregion
 
@@ -84,37 +77,11 @@ namespace TuPedido.ViewModels
         {
             userManager = DependencyContainer.Resolve<IUserManager>();
             navigationService = DependencyContainer.Resolve<INavigationService>();
-
-            Initialize();
         }
 
-        private void Initialize()
+        public virtual Task InitializeAsync(object navigationData)
         {
-            LogoutCommand = new Command(async () => await Logout());
-            GoBackCommand = new Command(async () => await GoBack());
-        }
-
-        private Task Logout()
-        {
-            return TryExecute(async () =>
-            {
-                await userManager.Logout();
-                await navigationService.InitializeAsync();
-            });
-        }
-
-        private Task GoBack()
-        {
-            return TryExecute(async () =>
-            {
-                await navigationService.BackAsync();
-            });
-        }
-
-        public virtual async Task InitializeAsync(object navigationData)
-        {
-            canGoBack = await navigationService.CanGoBackAsync();
-            await Task.FromResult(false);
+            return Task.FromResult(false);
         }
 
         protected async Task TryExecute(Func<Task> execute, Func<Task> onError = null)

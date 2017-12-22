@@ -15,7 +15,7 @@ namespace TuPedido
         public static void RegisterDependencies()
         {
             Register( new Configuration(), typeof(IConfiguration) );
-            Register( new NavigationService(), typeof(INavigationService) );
+            Register( new NavigationService<Views.LoginView, Views.OrdersListView>(), typeof(INavigationService) );
             Register( new RestClient(new HttpClient()), typeof(IRestClient) );
             Register( new UserService(Resolve<IRestClient>(), Resolve<IConfiguration>()), typeof(IUserService) );
             Register( new Database<User>(Resolve<IFileHelper>(), Resolve<IConfiguration>()), typeof(IDatabase<User>) );

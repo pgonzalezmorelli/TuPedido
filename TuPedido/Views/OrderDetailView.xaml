@@ -14,12 +14,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentView ControlTemplate="{StaticResource NavPageTemplate}">
-
         <Label Text="Detail Page!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-
-    </ContentView>
     
 </ContentPage>

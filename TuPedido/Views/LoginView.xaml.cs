@@ -10,6 +10,7 @@ namespace TuPedido.Views
 		{
 			InitializeComponent ();
             this.autocomplete.SelectedItem = null;
-		}
+            this.InitializeToolbar(false);
+        }
 	}
 }

@@ -14,14 +14,12 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentView ControlTemplate="{StaticResource NavPageTemplate}">
-        <StackLayout VerticalOptions="CenterAndExpand">
-            <Label Text="There are not orders!" 
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <Label Text="There are not orders!" 
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
 
-            <Button Text="View detail!" Command="{Binding ViewDetailCommand}"/>
-        </StackLayout>
-    </ContentView>
-    
+        <Button Text="View detail!" Command="{Binding ViewDetailCommand}"/>
+    </StackLayout>
+
 </ContentPage>

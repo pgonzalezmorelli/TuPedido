@@ -1,87 +1,78 @@
 ﻿using System.Threading.Tasks;
-using TuPedido.Views;
 using Xamarin.Forms;
 
 namespace TuPedido.Services
 {
-    public class NavigationService : INavigationService
+    public class NavigationService<TPublicHome, TPrivateHome> : INavigationService
+        where TPublicHome : Page, new()
+        where TPrivateHome : Page, new()
     {
         private readonly bool animateNavigation = false;
+        private INavigation navigation;
+        private Page currentPage;
 
         public Task InitializeAsync()
         {
-            return NavigateToAsync(new LoginView());
+            navigation = App.Current.MainPage?.Navigation;
+            return NavigateToAsync(new TPublicHome());
         }
 
         public Task NavigateToAsync(Page page)
         {
-            return Task.Run(async () =>
-            {
-                var isLogin = page is LoginView;
-                if (App.CurrentUser != null && isLogin)
-                {
-                    page = new OrdersListView();
-                }
-
-                var mainPage = App.Current.MainPage as NavigationPage;
-                var existNavigation = mainPage != null;
-                if (existNavigation && !isLogin)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await mainPage.Navigation.PushAsync(page, animateNavigation);
-                        var viewModel = page.BindingContext as ViewModels.ViewModelBase;
-                        if (viewModel != null)
-                        {
-                            await viewModel.InitializeAsync(null);
-                            //viewModel.CanGoBack = await CanGoBackAsync();
-                        }
-                    });
-                    return;
-                };
-
-                await SetMainPage(page, !isLogin && !existNavigation);
-            });
+            return InternalNavigateToAsync(page, null);
         }
 
-        private Task SetMainPage(Page page, bool createNavigation)
+        public Task NavigateToAsync<T>(Page page, T navigationData)
+        {
+            return InternalNavigateToAsync(page, navigationData);
+        }
+
+        private Task InternalNavigateToAsync(Page page, object navigationData)
         {
             return Task.Run(() =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    App.Current.MainPage = createNavigation ? new NavigationPage(page) : page;
-                    var viewModel = page.BindingContext as ViewModels.ViewModelBase;
-                    if (viewModel != null)
+                    if (App.CurrentUser == null && !(page is TPublicHome))
                     {
-                        await viewModel.InitializeAsync(null);
-                        //viewModel.CanGoBack = await CanGoBackAsync();
+                        page = new TPublicHome();
                     }
+                    else if (App.CurrentUser != null && page is TPublicHome)
+                    {
+                        page = new TPrivateHome();
+                    }
+
+                    if (page is TPublicHome)
+                    {
+                        App.Current.MainPage = new NavigationPage(page);
+                        navigation = App.Current.MainPage.Navigation;
+                    }
+                    else
+                    {
+                        await navigation.PushAsync(page, animateNavigation);
+                    }
+                    
+                    var viewModel = page.BindingContext as ViewModels.ViewModelBase;
+                    await viewModel?.InitializeAsync(navigationData);
+
+                    if (currentPage is TPublicHome)
+                    {
+                        navigation.RemovePage(currentPage);
+                    }
+                    currentPage = page;
                 });
             });
         }
-
+        
         public Task BackAsync()
-        {
-            return Task.Run(async () =>
-            {
-                if (await CanGoBackAsync())
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        var mainPage = App.Current.MainPage as NavigationPage;
-                        await mainPage?.Navigation.PopAsync(animateNavigation);
-                    });
-                }
-            });
-        }
-
-        public Task<bool> CanGoBackAsync()
         {
             return Task.Run(() =>
             {
-                var mainPage = App.Current.MainPage as NavigationPage;
-                return mainPage != null && mainPage.Navigation.NavigationStack.Count > 1;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var mainPage = App.Current.MainPage as NavigationPage;
+                    await mainPage?.Navigation.PopAsync(animateNavigation);
+                });
             });
         }
     }
