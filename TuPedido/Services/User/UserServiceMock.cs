@@ -12,26 +12,10 @@ namespace TuPedido.Services
             Task.Delay(3000).Wait();
             return Task.FromResult((IEnumerable<User>)new List<User>
             {
-                new User
-                {
-                    Name = "Adrian Claveri",
-                    Email = "adrian.claveri@uruit.com"
-                },
-                new User
-                {
-                    Name = "Sebastián Cabrera",
-                    Email = "sebastian.cabrera@uruit.com"
-                },
-                new User
-                {
-                    Name = "Rodrigo Pintos",
-                    Email = "rodrigo.pintos@uruit.com"
-                },
-                new User
-                {
-                    Name = "Pablo González",
-                    Email = "pablo.gonzalez@uruit.com"
-                }
+                new User { Name = "Adrian Claveri" },
+                new User { Name = "Sebastián Cabrera" },
+                new User { Name = "Rodrigo Pintos" },
+                new User { Name = "Pablo González" }
             });
         }
     }

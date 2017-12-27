@@ -145,6 +145,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete">
       <Version>15.4.0.17</Version>
     </PackageReference>
+    <PackageReference Include="UXDivers.GorillaPlayer.SDK">
+      <Version>1.1.0.4</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>2.5.0.121934</Version>
     </PackageReference>
@@ -161,6 +164,6 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\logout.png" />
+    <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
 </Project>

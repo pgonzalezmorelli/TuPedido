@@ -4,6 +4,10 @@
              x:Class="TuPedido.App">
     <Application.Resources>
         <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#21282f</Color>
+            <Color x:Key="SecondaryColor">#1ed760</Color>
+            <Color x:Key="PrimaryTextColor">White</Color>
+            <Color x:Key="BackgroundColor">#cacfd3</Color>
             <Color x:Key="ErrorTextColor">IndianRed</Color>
 
             <Style x:Key="Title" TargetType="Label">

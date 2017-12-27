@@ -17,10 +17,14 @@ namespace Xamarin.Forms
             {
                 page.ToolbarItems.Add(new ToolbarItem
                 {
-                    Icon = "logout.png",
+                    Icon = "logo.png"
+                });
+                page.ToolbarItems.Add(new ToolbarItem
+                {
                     Text = "Logout",
                     Command = new Command(async () => await Logout())
                 });
+                page.Title = App.CurrentUser.Name;
             }
         }
 

@@ -1,13 +1,17 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using System.Threading.Tasks;
 using TuPedido.Helpers;
+using TuPedido.Managers;
 using TuPedido.Models;
 using TuPedido.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace TuPedido
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class App : Application
 	{
         public static User CurrentUser { get; set; }
@@ -16,9 +20,7 @@ namespace TuPedido
 		{
 			InitializeComponent();
             SetupAppCenter();
-
-            var navigation = DependencyContainer.Resolve<INavigationService>();
-            navigation.InitializeAsync();
+            Initialize();  
         }
 
 		protected override void OnStart ()
@@ -45,6 +47,18 @@ namespace TuPedido
                 config.AppCenter.UwpSecretKey),
                 typeof(Analytics), 
                 typeof(Crashes));
+        }
+
+        private void Initialize()
+        {
+            Task.Run(async () => 
+            {
+                var userManager = DependencyContainer.Resolve<IUserManager>();
+                CurrentUser = await userManager.GetCurrentUser();
+
+                var navigation = DependencyContainer.Resolve<INavigationService>();
+                await navigation.InitializeAsync();
+            }).Wait();
         }
     }
 }

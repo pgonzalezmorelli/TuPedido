@@ -23,11 +23,7 @@ namespace TuPedido.Services
 
             return employees
                 .Where(u => !u.Deleted)
-                .Select(u => new User
-                {
-                    Name = u.Name,
-                    Email = u.Mail
-                })
+                .Select(u => new User { Name = u.Name })
                 .OrderBy(u => u.Name)
                 .ToList();
         }

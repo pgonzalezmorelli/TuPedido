@@ -2928,7 +2928,7 @@ namespace TuPedido.Droid
 			public const int icon = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public const int logout = 2130837773;
+			public const int logo = 2130837773;
 			
 			// aapt resource value: 0x7f02010e
 			public const int mr_button_connected_dark = 2130837774;

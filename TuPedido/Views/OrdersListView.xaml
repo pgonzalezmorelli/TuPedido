@@ -6,13 +6,6 @@
              viewModelBase:ViewModelAutoWire.AutoWireViewModel="true"
              xmlns:ext="clr-namespace:TuPedido.Extensions"
              x:Class="TuPedido.Views.OrdersListView">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ext:NavResources />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <StackLayout VerticalOptions="CenterAndExpand">
         <Label Text="There are not orders!" 

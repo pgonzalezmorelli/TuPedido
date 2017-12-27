@@ -5,7 +5,8 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfAutoComplete.XForms;assembly=Syncfusion.SfAutoComplete.XForms"
              xmlns:ext="clr-namespace:TuPedido.Extensions;assembly=TuPedido"
              xmlns:viewModelBase="clr-namespace:TuPedido.ViewModels;assembly=TuPedido"
-             viewModelBase:ViewModelAutoWire.AutoWireViewModel="true">
+             viewModelBase:ViewModelAutoWire.AutoWireViewModel="true"
+             BackgroundColor="{StaticResource BackgroundColor}">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS" Value="20, 40, 20, 20" />
@@ -15,44 +16,106 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ext:NegateConverter x:Key="negateConverter" />
+
+            <Style x:Key="MainGrid" TargetType="Grid">
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style x:Key="Banner" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="Margin" Value="0,0,0,20" />
+            </Style>
+            
+            <Style x:Key="BannerPanel" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="60" />
+            </Style>
+
+            <Style x:Key="AppLogo" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit" />
+            </Style>
+
+            <Style x:Key="AppTitle" TargetType="Label" BasedOn="{StaticResource Title}">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <Style x:Key="LoginPanel" TargetType="StackLayout">
+                <Setter Property="Padding" Value="0,20,0,0" />
+            </Style>
+
+            <Style x:Key="AutoComplete" TargetType="syncfusion:SfAutoComplete">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+            </Style>
+
+            <Style x:Key="LoginButton" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="Margin" Value="0,0,0,20" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
+            </Style>
+
+            <Style x:Key="Loader" TargetType="ActivityIndicator">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="Color" Value="{StaticResource PrimaryColor}" />
+            </Style>
+
+            <Style x:Key="ErrorLabel" TargetType="Label" BasedOn="{StaticResource Error}">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid Style="{StaticResource MainGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label 
+            <Frame  
                 Grid.Row="0" 
                 Grid.Column="0"
-                Text="Willkommen" 
-                HorizontalOptions="Center"
-                Style="{StaticResource Title}" />
-            <StackLayout Grid.Row="1" Grid.Column="0" IsVisible="{Binding IsBusy, Converter={StaticResource negateConverter}}" >
+                Style="{StaticResource Banner}">
+                <StackLayout 
+                    Orientation="Horizontal"
+                    Style="{StaticResource BannerPanel}">
+                    <Image Style="{StaticResource AppLogo}" Source="logo.png" />
+                    <Label Style="{StaticResource AppTitle}" Text="Tu Pedido!" />
+                </StackLayout>
+            </Frame>
+            <StackLayout 
+                Grid.Row="1" 
+                Grid.Column="0" 
+                Style="{StaticResource LoginPanel}"
+                IsVisible="{Binding IsBusy, Converter={StaticResource negateConverter}}" >
                 <syncfusion:SfAutoComplete
                     x:Name="autocomplete"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="0,20"
-                    HeightRequest="40" 
                     AutoCompleteMode="SuggestAppend"
                     SuggestionMode="Contains"
-                    Watermark="Who are you?"
+                    Watermark="Seleccionar..."
+                    MinimumPrefixCharacters="3"
                     DataSource="{Binding Users}"
                     DisplayMemberPath="Name"
                     SelectedItem="{Binding SelectedUser, Mode=TwoWay}" />
                 <Button 
+                    Style="{StaticResource LoginButton}"
                     Text="Login!" 
-                    HorizontalOptions="FillAndExpand"
-                    Margin="0,0,0,20"
                     Command="{Binding LoginCommand}" />
                 <Label 
-                    HorizontalOptions="FillAndExpand"
-                    Text="{Binding ErrorMessage}"
-                    Style="{StaticResource Error}" />
+                    Style="{StaticResource ErrorLabel}" 
+                    Text="{Binding ErrorMessage}" />
             </StackLayout>
-            <ActivityIndicator Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" />
+            <ActivityIndicator 
+                Grid.Row="1" 
+                Grid.Column="0"
+                Style="{StaticResource Loader}"
+                IsVisible="{Binding IsBusy}" 
+                IsRunning="{Binding IsBusy}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

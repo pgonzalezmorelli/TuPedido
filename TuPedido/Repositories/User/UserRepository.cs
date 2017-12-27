@@ -17,7 +17,10 @@ namespace TuPedido.Repositories
 
         public Task<User> GetCurrentUser()
         {
-            return database.First();
+            return TryExecute(
+                () => database.First(),
+                _ => Task.FromResult((User)null)
+            );
         }
 
         public async Task AddUser(User user)
@@ -33,7 +36,7 @@ namespace TuPedido.Repositories
             ValidationHelper.CheckRepository(result > 0, "Couldn't remove user");
         }
 
-        private async Task<T> TryExecute<T>(Func<Task<T>> execute, Func<Task<T>> onError = null)
+        private async Task<T> TryExecute<T>(Func<Task<T>> execute, Func<Exception, Task<T>> onError = null)
         {
             try
             {
@@ -41,7 +44,7 @@ namespace TuPedido.Repositories
             }
             catch (Exception ex)
             {
-                await onError?.Invoke();
+                await onError?.Invoke(ex);
                 throw new RepositoryException(ex.Message, ex);
             }
         }

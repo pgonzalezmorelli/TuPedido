@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TuPedido.Models
+﻿namespace TuPedido.Models
 {
     public class Employee
     {

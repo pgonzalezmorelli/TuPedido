@@ -84,7 +84,7 @@ namespace TuPedido.ViewModels
             return Task.FromResult(false);
         }
 
-        protected async Task TryExecute(Func<Task> execute, Func<Task> onError = null)
+        protected async Task TryExecute(Func<Task> execute, Func<Exception, Task> onError = null)
         {
             await Task.Run(async () =>
             {
@@ -98,7 +98,7 @@ namespace TuPedido.ViewModels
                 catch (Exception ex)
                 {
                     ErrorMessage = ex.Message;
-                    if (onError != null) await onError();
+                    if (onError != null) await onError(ex);
                 }
                 finally
                 {

@@ -42,9 +42,9 @@ namespace TuPedido.Services
                         page = new TPrivateHome();
                     }
 
-                    if (page is TPublicHome)
+                    if (App.Current.MainPage as NavigationPage == null || page is TPublicHome)
                     {
-                        App.Current.MainPage = new NavigationPage(page);
+                        App.Current.MainPage = new Views.NavigationView(page);
                         navigation = App.Current.MainPage.Navigation;
                     }
                     else

@@ -19,7 +19,12 @@ namespace TuPedido.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
             ResolveDependencies();
+            
             LoadApplication(new App());
+            //LoadApplication(UXDivers.Gorilla.Droid.Player.CreateApplication(this,
+            //    new UXDivers.Gorilla.Config("Good Gorilla")
+            //    .RegisterAssembly(typeof(Syncfusion.SfAutoComplete.XForms.SfAutoComplete).Assembly)
+            //    .RegisterAssembly(typeof(TuPedido.Extensions.FontAwesomeIcon).Assembly)));
         }
 
         private void ResolveDependencies()

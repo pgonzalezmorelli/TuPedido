@@ -6,15 +6,8 @@
              viewModelBase:ViewModelAutoWire.AutoWireViewModel="true"
              xmlns:ext="clr-namespace:TuPedido.Extensions"
              x:Class="TuPedido.Views.OrderDetailView">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ext:NavResources />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
-        <Label Text="Detail Page!" 
+    <Label Text="Detail Page!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
     

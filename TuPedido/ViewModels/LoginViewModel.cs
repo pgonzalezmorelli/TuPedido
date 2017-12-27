@@ -52,11 +52,7 @@ namespace TuPedido.ViewModels
             {
                 ValidationHelper.Check(SelectedUser != null, "Selecciona un usuario de la lista");
 
-                await userManager.Login(new User
-                {
-                    Name = SelectedUser.Name,
-                    Email = SelectedUser.Email
-                });
+                await userManager.Login(SelectedUser);
 
                 await navigationService.NavigateToAsync(new Views.OrdersListView());
             });
