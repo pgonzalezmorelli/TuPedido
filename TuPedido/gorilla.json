@@ -1,0 +1,7 @@
+﻿{
+  "knownAssemblies": [
+    { "name": "Syncfusion.SfAutoComplete.XForms" },
+    { "name": "TuPedido" },
+    { "name": "TuPedido.Extensions" }
+  ]
+}

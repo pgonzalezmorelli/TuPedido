@@ -1,19 +1,26 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
-
+using System.Threading.Tasks;
+using TuPedido.Helpers;
+using TuPedido.Managers;
+using TuPedido.Models;
+using TuPedido.Services;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace TuPedido
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class App : Application
 	{
+        public static User CurrentUser { get; set; }
+
 		public App ()
 		{
 			InitializeComponent();
-
             SetupAppCenter();
-            MainPage = new TuPedido.Views.MainPage();
+            Initialize();  
         }
 
 		protected override void OnStart ()
@@ -33,9 +40,25 @@ namespace TuPedido
 
         private void SetupAppCenter()
         {
-            var config = DependencyService.Get<IConfiguration>();
-            AppCenter.Start(string.Format("ios={0}; android={1}; uwp={2};", config.AppCenter.iOSSecretKey, config.AppCenter.AndroidSecretKey, config.AppCenter.UwpSecretKey),
-                   typeof(Analytics), typeof(Crashes));
+            var config = DependencyContainer.Resolve<IConfiguration>();
+            AppCenter.Start(string.Format("ios={0}; android={1}; uwp={2};", 
+                config.AppCenter.iOSSecretKey, 
+                config.AppCenter.AndroidSecretKey, 
+                config.AppCenter.UwpSecretKey),
+                typeof(Analytics), 
+                typeof(Crashes));
+        }
+
+        private void Initialize()
+        {
+            Task.Run(async () => 
+            {
+                var userManager = DependencyContainer.Resolve<IUserManager>();
+                CurrentUser = await userManager.GetCurrentUser();
+
+                var navigation = DependencyContainer.Resolve<INavigationService>();
+                await navigation.InitializeAsync();
+            }).Wait();
         }
     }
 }

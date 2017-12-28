@@ -2,9 +2,22 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TuPedido.App">
-	<Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#21282f</Color>
+            <Color x:Key="SecondaryColor">#1ed760</Color>
+            <Color x:Key="PrimaryTextColor">White</Color>
+            <Color x:Key="BackgroundColor">#cacfd3</Color>
+            <Color x:Key="ErrorTextColor">IndianRed</Color>
 
-		<!-- Application resource dictionary -->
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
 
-	</Application.Resources>
+            <Style x:Key="Error" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ErrorTextColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

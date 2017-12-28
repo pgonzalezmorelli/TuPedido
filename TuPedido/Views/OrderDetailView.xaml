@@ -2,10 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TuPedido"
-             x:Class="TuPedido.Views.MainPage">
+             xmlns:viewModelBase="clr-namespace:TuPedido.ViewModels;assembly=TuPedido"
+             viewModelBase:ViewModelAutoWire.AutoWireViewModel="true"
+             xmlns:ext="clr-namespace:TuPedido.Extensions"
+             x:Class="TuPedido.Views.OrderDetailView">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
+    <Label Text="Detail Page!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-
+    
 </ContentPage>
