@@ -15,7 +15,7 @@
     </ContentPage.Padding>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ext:NegateConverter x:Key="negateConverter" />
+            <ext:InvertBoolConverter x:Key="invertBool" />
 
             <Style x:Key="MainGrid" TargetType="Grid">
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
@@ -37,10 +37,12 @@
                 <Setter Property="Aspect" Value="AspectFit" />
             </Style>
 
-            <Style x:Key="AppTitle" TargetType="Label" BasedOn="{StaticResource Title}">
+            <Style x:Key="AppTitle" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontFamily" Value="{StaticResource BillyOhio}"/>
+                <Setter Property="FontSize" Value="50"/>
             </Style>
 
             <Style x:Key="LoginPanel" TargetType="StackLayout">
@@ -58,11 +60,6 @@
                 <Setter Property="Margin" Value="0,0,0,20" />
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
                 <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
-            </Style>
-
-            <Style x:Key="Loader" TargetType="ActivityIndicator">
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-                <Setter Property="Color" Value="{StaticResource PrimaryColor}" />
             </Style>
 
             <Style x:Key="ErrorLabel" TargetType="Label" BasedOn="{StaticResource Error}">
@@ -92,7 +89,7 @@
                 Grid.Row="1" 
                 Grid.Column="0" 
                 Style="{StaticResource LoginPanel}"
-                IsVisible="{Binding IsBusy, Converter={StaticResource negateConverter}}" >
+                IsVisible="{Binding IsBusy, Converter={StaticResource invertBool}}" >
                 <syncfusion:SfAutoComplete
                     x:Name="autocomplete"
                     AutoCompleteMode="SuggestAppend"
@@ -104,7 +101,7 @@
                     SelectedItem="{Binding SelectedUser, Mode=TwoWay}" />
                 <Button 
                     Style="{StaticResource LoginButton}"
-                    Text="Login!" 
+                    Text="Ingresar" 
                     Command="{Binding LoginCommand}" />
                 <Label 
                     Style="{StaticResource ErrorLabel}" 

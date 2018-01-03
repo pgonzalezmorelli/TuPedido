@@ -17,12 +17,17 @@ namespace TuPedido
             Register( new Configuration(), typeof(IConfiguration) );
             Register( new NavigationService<Views.LoginView, Views.OrdersListView>(), typeof(INavigationService) );
             Register( new RestClient(new HttpClient()), typeof(IRestClient) );
-            Register( new UserService(Resolve<IRestClient>(), Resolve<IConfiguration>()), typeof(IUserService) );
             Register( new Database<User>(Resolve<IFileHelper>(), Resolve<IConfiguration>()), typeof(IDatabase<User>) );
+
             Register( new UserRepository(Resolve<IDatabase<User>>()), typeof(IUserRepository) );
+            Register( new UserService(Resolve<IRestClient>(), Resolve<IConfiguration>()), typeof(IUserService) );
             Register( new UserManager(Resolve<IUserService>(), Resolve<IUserRepository>()), typeof(IUserManager) );
             Register( new LoginViewModel(Resolve<IUserManager>(), Resolve<INavigationService>()), typeof(LoginViewModel) );
-            Register( new OrdersListViewModel(Resolve<INavigationService>()), typeof(OrdersListViewModel) );
+
+            Register( new OrderServiceMock(), typeof(IOrderService) );
+            Register( new OrderManager(Resolve<IOrderService>()), typeof(IOrderManager) );
+            Register( new OrdersListViewModel(Resolve<INavigationService>(), Resolve<IOrderManager>()), typeof(OrdersListViewModel) );
+
             Register( new OrderDetailViewModel(), typeof(OrderDetailViewModel) );
         }
 

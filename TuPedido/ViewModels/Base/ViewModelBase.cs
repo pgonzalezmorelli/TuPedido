@@ -13,8 +13,7 @@ namespace TuPedido.ViewModels
     {
         #region Attributes & Properties
 
-        private readonly IUserManager userManager;
-        private readonly INavigationService navigationService;
+        protected readonly INavigationService navigationService;
         private bool isBusy;
         private string errorMessage;
         
@@ -73,10 +72,9 @@ namespace TuPedido.ViewModels
 
         #endregion
 
-        public ViewModelBase()
+        public ViewModelBase(INavigationService navigationService)
         {
-            userManager = DependencyContainer.Resolve<IUserManager>();
-            navigationService = DependencyContainer.Resolve<INavigationService>();
+            this.navigationService = navigationService;
         }
 
         public virtual Task InitializeAsync(object navigationData)
@@ -88,6 +86,8 @@ namespace TuPedido.ViewModels
         {
             await Task.Run(async () =>
             {
+                if (IsBusy) return;
+
                 IsBusy = true;
                 ErrorMessage = string.Empty;
 

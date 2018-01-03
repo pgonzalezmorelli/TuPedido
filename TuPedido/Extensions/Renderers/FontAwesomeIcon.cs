@@ -6,9 +6,13 @@ namespace TuPedido.Extensions
     {
         public const string Typeface = "FontAwesome";
 
-        public FontAwesomeIcon(string icon)
+        public FontAwesomeIcon()
         {
             FontFamily = Typeface;
+        }
+
+        public FontAwesomeIcon(string icon) : this()
+        {
             Text = icon;
         }
 
@@ -689,20 +693,6 @@ namespace TuPedido.Extensions
             public static string Superpowers = "\uf2dd";
             public static string Wpexplorer = "\uf2de";
             public static string Meetup = "\uf2e0";
-        }
-    }
-
-    public class BackIcon : FontAwesomeIcon
-    {
-        public BackIcon() : base (Icon.ChevronLeft)
-        {
-        }
-    }
-
-    public class LogoutIcon : FontAwesomeIcon
-    {
-        public LogoutIcon() : base(Icon.SignOut)
-        {
         }
     }
 }

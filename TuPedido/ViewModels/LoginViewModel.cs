@@ -14,7 +14,6 @@ namespace TuPedido.ViewModels
         #region Attributes & Properties
 
         private readonly IUserManager userManager;
-        private readonly INavigationService navigationService;
         private IEnumerable<User> users;
         private User selectedUser;
         
@@ -24,10 +23,9 @@ namespace TuPedido.ViewModels
         
         #endregion
 
-        public LoginViewModel(IUserManager userManager, INavigationService navigationService)
+        public LoginViewModel(IUserManager userManager, INavigationService navigationService) : base(navigationService)
         {
             this.userManager = userManager;
-            this.navigationService = navigationService;
 
             LoginCommand = new Command(async () => await Login());
         }
