@@ -85,6 +85,13 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\FontAwesome.ttf" />
+    <AndroidAsset Include="Assets\fonts\BillyOhio.ttf" />
+    <AndroidAsset Include="Assets\fonts\Exo2-Bold.otf" />
+    <AndroidAsset Include="Assets\fonts\Exo2-BoldItalic.otf" />
+    <AndroidAsset Include="Assets\fonts\Exo2-Italic.otf" />
+    <AndroidAsset Include="Assets\fonts\Exo2-Regular.otf" />
+    <AndroidAsset Include="Assets\fonts\Exo2-Thin.otf" />
+    <AndroidAsset Include="Assets\fonts\Exo2-ThinItalic.otf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>

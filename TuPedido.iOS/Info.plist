@@ -53,6 +53,13 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>fonts/FontAwesome.ttf</string>
+		<string>fonts/BillyOhio.ttf</string>
+		<string>fonts/Exo2-Bold.otf</string>
+		<string>fonts/Exo2-BoldItalic.otf</string>
+		<string>fonts/Exo2-Italic.otf</string>
+		<string>fonts/Exo2-Regular.otf</string>
+		<string>fonts/Exo2-Thin.otf</string>
+		<string>fonts/Exo2-ThinItalic.otf</string>
 	</array>
 </dict>
 </plist>

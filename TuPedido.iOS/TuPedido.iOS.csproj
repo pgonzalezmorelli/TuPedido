@@ -97,6 +97,13 @@
     <BundleResource Include="Resources\fonts\FontAwesome.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\fonts\BillyOhio.ttf" />
+    <BundleResource Include="Resources\fonts\Exo2-Bold.otf" />
+    <BundleResource Include="Resources\fonts\Exo2-BoldItalic.otf" />
+    <BundleResource Include="Resources\fonts\Exo2-Italic.otf" />
+    <BundleResource Include="Resources\fonts\Exo2-Regular.otf" />
+    <BundleResource Include="Resources\fonts\Exo2-Thin.otf" />
+    <BundleResource Include="Resources\fonts\Exo2-ThinItalic.otf" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
