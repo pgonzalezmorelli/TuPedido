@@ -12,10 +12,10 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            
-            <ext:InvertBoolConverter x:Key="invertBool" />
-            
-            <ext:DateToStringConverter x:Key="dateToString" />
+
+            <ext:InvertBoolConverter x:Key="InvertBool" />
+            <ext:DateToStringConverter x:Key="DateToString" />
+            <ext:NullableToStringConverter x:Key="NullableToString" />
 
             <!-- List header -->
             <Style x:Key="ItemGroupHeader" TargetType="Label">
@@ -83,11 +83,13 @@
                 <Setter Property="HorizontalTextAlignment" Value="End" />
             </Style>
 
+            <Style x:Key="NotifyContainer" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            </Style>
+            
             <Style x:Key="Notify" TargetType="StackLayout">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
-                <Setter Property="Padding" Value="8,18,8,20"/>
             </Style>
 
             <Style x:Key="NotifyText" TargetType="Label">
@@ -135,22 +137,24 @@
 
                                 <StackLayout Grid.Column="0">
                                     <Label Text="Fecha" Style="{StaticResource DateLabel}"/>
-                                    <Label Text="{Binding Date, Converter={StaticResource dateToString}}" Style="{StaticResource Date}"/>
+                                    <Label Text="{Binding Date, Converter={StaticResource DateToString}}" Style="{StaticResource Date}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" >
-                                    <Label Text="Llegada estimada" Style="{StaticResource DateLabelRight}" />
-                                    <Label Text="{Binding Date, Converter={StaticResource dateToString}}" Style="{StaticResource DateRight}" />
+                                    <Label Text="Demora estimada" Style="{StaticResource DateLabelRight}" />
+                                    <Label Text="{Binding EstimatedDelayMinutes, Converter={StaticResource NullableToString}}" Style="{StaticResource DateRight}" />
                                 </StackLayout>
                             </Grid>
                         </Grid>
-                        <StackLayout Grid.Column="1" Style="{StaticResource Notify}">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding BindingContext.NotifyCommand, Source={x:Reference OrdersListView}}" CommandParameter="{Binding .}" />
-                            </StackLayout.GestureRecognizers>
+                        <Grid Grid.Column="1" Style="{StaticResource NotifyContainer}">
+                            <StackLayout Style="{StaticResource Notify}">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.NotifyCommand, Source={x:Reference OrdersListView}}" CommandParameter="{Binding .}" />
+                                </StackLayout.GestureRecognizers>
 
-                            <ext:FontAwesomeIcon Text="&#xf0a1;" Style="{StaticResource NotifyIcon}"/>
-                            <Label Text="Avisar" Style="{StaticResource NotifyLabel}"/>
-                        </StackLayout>
+                                <ext:FontAwesomeIcon Text="&#xf0a1;" Style="{StaticResource NotifyIcon}"/>
+                                <Label Text="Avisar" Style="{StaticResource NotifyLabel}"/>
+                            </StackLayout>
+                        </Grid>
                     </Grid>
                 </ViewCell>
             </DataTemplate>
@@ -188,11 +192,11 @@
 
                                 <StackLayout Grid.Column="0">
                                     <Label Text="Recibido" Style="{StaticResource DateLabel}"/>
-                                    <Label Text="{Binding ReceivedDate, Converter={StaticResource dateToString}}" Style="{StaticResource Date}"/>
+                                    <Label Text="{Binding ReceivedDate, Converter={StaticResource NullableToString}}" Style="{StaticResource Date}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" >
                                     <Label Text="Avisado" Style="{StaticResource DateLabelRight}" />
-                                    <Label Text="{Binding NotificationDate, Converter={StaticResource dateToString}}" Style="{StaticResource DateRight}" />
+                                    <Label Text="{Binding NotificationDate, Converter={StaticResource NullableToString}}" Style="{StaticResource DateRight}" />
                                 </StackLayout>
                             </Grid>
                         </Grid>
@@ -220,7 +224,7 @@
                 SeparatorColor="{StaticResource BackgroundColor}"
                 IsGroupingEnabled="True"
                 HasUnevenRows="true"
-                IsVisible="{Binding IsBusy, Converter={StaticResource invertBool}}">
+                IsVisible="{Binding IsBusy, Converter={StaticResource InvertBool}}">
             </ListView>
             <ActivityIndicator 
                 Grid.Row="0" 
