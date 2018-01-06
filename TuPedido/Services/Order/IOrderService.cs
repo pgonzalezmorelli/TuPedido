@@ -7,10 +7,10 @@ namespace TuPedido.Services
 {
     public interface IOrderService
     {
-        Task<Order> GetOrder(Guid id);
+        Task<Order> GetOrderAsync(Guid id);
 
-        Task<IEnumerable<Order>> GetOrders();
+        Task<IEnumerable<Order>> GetOrdersAsync();
         
-        Task<Order> SaveOrder(Order order);
+        Task<Order> SaveOrderAsync(Order order);
     }
 }

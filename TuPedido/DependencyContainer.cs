@@ -18,13 +18,15 @@ namespace TuPedido
             Register( new NavigationService<Views.LoginView, Views.OrdersListView>(), typeof(INavigationService) );
             Register( new RestClient(new HttpClient()), typeof(IRestClient) );
             Register( new Database<User>(Resolve<IFileHelper>(), Resolve<IConfiguration>()), typeof(IDatabase<User>) );
+            Register( new DropboxServiceClient(Resolve<IConfiguration>()), typeof(IDropboxServiceClient) );
+            Register( new ExcelHelper(Resolve<IConfiguration>()), typeof(IExcelHelper) );
 
             Register( new UserRepository(Resolve<IDatabase<User>>()), typeof(IUserRepository) );
             Register( new UserService(Resolve<IRestClient>(), Resolve<IConfiguration>()), typeof(IUserService) );
             Register( new UserManager(Resolve<IUserService>(), Resolve<IUserRepository>()), typeof(IUserManager) );
             Register( new LoginViewModel(Resolve<IUserManager>(), Resolve<INavigationService>()), typeof(LoginViewModel) );
 
-            Register( new OrderServiceMock(), typeof(IOrderService) );
+            Register( new OrderService(Resolve<IDropboxServiceClient>(), Resolve<IExcelHelper>(), Resolve<IConfiguration>()), typeof(IOrderService) );
             Register( new OrderManager(Resolve<IOrderService>()), typeof(IOrderManager) );
             Register( new OrdersListViewModel(Resolve<INavigationService>(), Resolve<IOrderManager>()), typeof(OrdersListViewModel) );
 

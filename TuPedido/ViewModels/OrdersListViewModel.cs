@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,9 +16,9 @@ namespace TuPedido.ViewModels
         #region Attributes & Properties
 
         private readonly IOrderManager orderManager;
-        private IEnumerable<OrderGrouping> orders;
+        private ObservableCollection<OrderGrouping> orders;
 
-        public IEnumerable<OrderGrouping> Orders { set { SetPropertyValue(ref orders, value); } get { return orders; } }
+        public ObservableCollection<OrderGrouping> Orders { set { SetPropertyValue(ref orders, value); } get { return orders; } }
         public ICommand ViewDetailCommand { get; set; }
         public ICommand NotifyCommand { get; set; }
         public ICommand LoadCommand { get; set; }
@@ -27,30 +28,30 @@ namespace TuPedido.ViewModels
         public OrdersListViewModel(INavigationService navigationService, IOrderManager orderManager) : base(navigationService)
         {
             this.orderManager = orderManager;
-            ViewDetailCommand = new Command<Order>(async (Order item) => await ViewDetail(item));
-            NotifyCommand = new Command<Order>(async (Order item) => await Notify(item));
-            LoadCommand = new Command(async () => await LoadOrders());
+            ViewDetailCommand = new Command<Order>(async (Order item) => await ViewDetailAsync(item));
+            NotifyCommand = new Command<Order>(async (Order item) => await NotifyAsync(item));
+            LoadCommand = new Command(async () => await LoadOrdersAsync());
         }
 
         public override Task InitializeAsync(object navigationData)
         {
-            return LoadOrders();
+            return LoadOrdersAsync();
         }
 
-        private Task LoadOrders()
+        private Task LoadOrdersAsync()
         {
             return TryExecute(async () =>
             {
-                var orders = await orderManager.GetOrders();
-                Orders = new List<OrderGrouping>
+                var orders = await orderManager.GetOrdersAsync();
+                Orders = new ObservableCollection<OrderGrouping>(new List<OrderGrouping>
                 {
-                    new OrderGrouping("Pendientes", orders.Where(o => !o.Received), "No existen pedidos pendientes"),
-                    new OrderGrouping("Recibidos", orders.Where(o => o.Received), "No existen pedidos recibidos"),
-                };
+                    new OrderGrouping("Pendientes", orders.Where(o => !o.Received).OrderBy(o => o.Date), "No existen pedidos pendientes"),
+                    new OrderGrouping("Recibidos", orders.Where(o => o.Received).OrderByDescending(o => o.ReceivedDate), "No existen pedidos recibidos"),
+                });
             });
         }
 
-        private Task ViewDetail(Order item)
+        private Task ViewDetailAsync(Order item)
         {
             return TryExecute(async () =>
             {
@@ -58,7 +59,7 @@ namespace TuPedido.ViewModels
             });
         }
 
-        private Task Notify(Order item)
+        private Task NotifyAsync(Order item)
         {
             return TryExecute(async () =>
             {

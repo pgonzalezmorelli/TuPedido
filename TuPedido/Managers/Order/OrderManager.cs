@@ -14,14 +14,14 @@ namespace TuPedido.Managers
             this.orderService = orderService;
         }
 
-        public Task<IEnumerable<Order>> GetOrders()
+        public Task<IEnumerable<Order>> GetOrdersAsync()
         {
-            return orderService.GetOrders();
+            return orderService.GetOrdersAsync();
         }
 
-        public Task<Order> SaveOrder(Order order)
+        public Task<Order> SaveOrderAsync(Order order)
         {
-            return orderService.SaveOrder(order);
+            return orderService.SaveOrderAsync(order);
         }        
     }
 }

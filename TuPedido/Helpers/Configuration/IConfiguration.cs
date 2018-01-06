@@ -5,6 +5,7 @@
         AppCenterConfig AppCenter { get; }
         EndpointsConfig Endpoints { get; }
         DatabaseConfig Database { get;  }
+        DropboxConfig Dropbox { get; }
     }
 
     public class AppCenterConfig
@@ -22,5 +23,12 @@
     public class DatabaseConfig
     {
         public string ConnectionString { get; set; }
+    }
+
+    public class DropboxConfig
+    {
+        public string AccessToken { get; set; }
+        public string FileName { get; set; }
+        public string DateTimeFormat { get; set; }
     }
 }

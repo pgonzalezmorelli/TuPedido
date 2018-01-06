@@ -6,8 +6,8 @@ namespace TuPedido.Managers
 {
     public interface IOrderManager
     {
-        Task<IEnumerable<Order>> GetOrders();
+        Task<IEnumerable<Order>> GetOrdersAsync();
 
-        Task<Order> SaveOrder(Order order);
+        Task<Order> SaveOrderAsync(Order order);
     }
 }

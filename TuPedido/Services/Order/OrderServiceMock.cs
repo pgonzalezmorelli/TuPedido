@@ -46,17 +46,17 @@ namespace TuPedido.Services
             }
         }; 
 
-        public Task<Order> GetOrder(Guid id)
+        public Task<Order> GetOrderAsync(Guid id)
         {
             return Task.FromResult(orders.FirstOrDefault(o => o.Id == id));
         }
 
-        public Task<IEnumerable<Order>> GetOrders()
+        public Task<IEnumerable<Order>> GetOrdersAsync()
         {
             return Task.FromResult(orders.AsEnumerable());
         }
 
-        public async Task<Order> SaveOrder(Order order)
+        public async Task<Order> SaveOrderAsync(Order order)
         {
             if (order.Id == Guid.Empty)
             {
@@ -65,7 +65,7 @@ namespace TuPedido.Services
                 return order;
             }
 
-            var existingOrder = await GetOrder(order.Id);
+            var existingOrder = await GetOrderAsync(order.Id);
             existingOrder.Date = order.Date;
             existingOrder.DeviceId = order.DeviceId;
             existingOrder.EstimatedDelayMinutes = order.EstimatedDelayMinutes;

@@ -152,6 +152,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete">
       <Version>15.4.0.17</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.XlsIO">
+      <Version>15.4.0.20</Version>
+    </PackageReference>
     <PackageReference Include="UXDivers.GorillaPlayer.SDK">
       <Version>1.1.0.4</Version>
     </PackageReference>
