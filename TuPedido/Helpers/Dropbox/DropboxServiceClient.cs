@@ -14,13 +14,16 @@ namespace TuPedido.Helpers
             accessToken = configuration.Dropbox.AccessToken;
         }
         
-        public async Task<byte[]> GetFileAsync(string filename)
+        public Task<byte[]> GetFileAsync(string filename)
         {
-            using (DropboxClient client = new DropboxClient(accessToken))
+            return ErrorHelper.TryExecuteServiceAsync(async () =>
             {
-                IDownloadResponse<FileMetadata> resp = await client.Files.DownloadAsync(filename);
-                return await resp.GetContentAsByteArrayAsync();
-            }
+                using (DropboxClient client = new DropboxClient(accessToken))
+                {
+                    IDownloadResponse<FileMetadata> resp = await client.Files.DownloadAsync(filename);
+                    return await resp.GetContentAsByteArrayAsync();
+                }
+            });
         }
     }
 }

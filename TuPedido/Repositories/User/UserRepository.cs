@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TuPedido.Exceptions;
 using TuPedido.Helpers;
 using TuPedido.Models;
 
@@ -17,7 +16,7 @@ namespace TuPedido.Repositories
 
         public Task<User> GetCurrentUser()
         {
-            return TryExecute(
+            return ErrorHelper.TryExecuteRepositoryAsync(
                 () => database.First(),
                 _ => Task.FromResult((User)null)
             );
@@ -26,27 +25,14 @@ namespace TuPedido.Repositories
         public async Task AddUser(User user)
         {
             user.Id = Guid.NewGuid();
-            var result = await TryExecute(() => database.Insert(user));
+            var result = await ErrorHelper.TryExecuteRepositoryAsync(() => database.Insert(user));
             ValidationHelper.CheckRepository(result > 0, "Couldn't save user");
         }
         
         public async Task RemoveUser(User user)
         {
-            var result = await TryExecute(() => database.Delete(user));
+            var result = await ErrorHelper.TryExecuteRepositoryAsync(() => database.Delete(user));
             ValidationHelper.CheckRepository(result > 0, "Couldn't remove user");
-        }
-
-        private async Task<T> TryExecute<T>(Func<Task<T>> execute, Func<Exception, Task<T>> onError = null)
-        {
-            try
-            {
-                return await execute();
-            }
-            catch (Exception ex)
-            {
-                await onError?.Invoke(ex);
-                throw new RepositoryException(ex.Message, ex);
-            }
         }
     }
 }

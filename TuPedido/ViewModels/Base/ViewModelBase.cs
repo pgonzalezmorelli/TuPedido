@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using TuPedido.Managers;
 using TuPedido.Services;
 using Xamarin.Forms;
 

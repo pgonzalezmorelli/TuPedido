@@ -8,10 +8,14 @@
              x:Class="TuPedido.Views.OrdersListView"
              x:Name="OrdersListView"
              BackgroundColor="{StaticResource BackgroundColor}"
+             ControlTemplate="{StaticResource PageTemplate}"
              Padding="20">
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ext:PageResources />
+            </ResourceDictionary.MergedDictionaries>
 
             <ext:InvertBoolConverter x:Key="InvertBool" />
             <ext:DateToStringConverter x:Key="DateToString" />
@@ -212,9 +216,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <Grid>
-            <ListView 
-                Grid.Row="0"
+        <ListView 
                 ItemsSource="{Binding Orders}" 
                 ItemTemplate="{StaticResource orderTemplateSelector}"
                 GroupHeaderTemplate="{StaticResource OrdersHeader}"
@@ -225,12 +227,6 @@
                 IsGroupingEnabled="True"
                 HasUnevenRows="true"
                 IsVisible="{Binding IsBusy, Converter={StaticResource InvertBool}}">
-            </ListView>
-            <ActivityIndicator 
-                Grid.Row="0" 
-                Style="{StaticResource Loader}"
-                IsVisible="{Binding IsBusy}" 
-                IsRunning="{Binding IsBusy}" />
-        </Grid>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

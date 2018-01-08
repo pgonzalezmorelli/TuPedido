@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace TuPedido.Extensions.Converters
+namespace TuPedido.Extensions
 {
     public class EmptyStringToBoolConverter : IValueConverter
     {

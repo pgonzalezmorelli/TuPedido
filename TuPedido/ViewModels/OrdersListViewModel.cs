@@ -40,9 +40,14 @@ namespace TuPedido.ViewModels
 
         private Task LoadOrdersAsync()
         {
-            return TryExecute(async () =>
+            return Task.Run(async() => 
             {
-                var orders = await orderManager.GetOrdersAsync();
+                IEnumerable<Order> orders = new List<Order>();
+                await TryExecute(async () =>
+                {
+                    orders = await orderManager.GetOrdersAsync();
+                });
+
                 Orders = new ObservableCollection<OrderGrouping>(new List<OrderGrouping>
                 {
                     new OrderGrouping("Pendientes", orders.Where(o => !o.Received).OrderBy(o => o.Date), "No existen pedidos pendientes"),

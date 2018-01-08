@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using TuPedido.Exceptions;
@@ -25,7 +24,7 @@ namespace TuPedido.Helpers
 
         public Task<T> GetAsync<T>(string uri)
         {
-            return TryExecuteAsync<T>(async () =>
+            return ErrorHelper.TryExecuteServiceAsync(async () =>
             {
                 var response = await client.GetAsync(uri);
                 return await HandleResponse<T>(response);
@@ -34,7 +33,7 @@ namespace TuPedido.Helpers
 
         private Task<T> HandleResponse<T>(HttpResponseMessage response)
         {
-            return TryExecuteAsync(async() => 
+            return ErrorHelper.TryExecuteServiceAsync(async() => 
             {
                 var content = await response.Content.ReadAsStringAsync();
                 if (response.IsSuccessStatusCode)
@@ -43,20 +42,6 @@ namespace TuPedido.Helpers
                 }
                 throw new ServiceErrorException((int)response.StatusCode, response.ReasonPhrase);
             });
-        }
-
-        private async Task<T> TryExecuteAsync<T>(Func<Task<T>> action, Action onError = null) 
-        {
-            try
-            {
-                return await action();
-            }
-            catch (Exception ex)
-            {
-                onError?.Invoke();
-                if (ex is ServiceErrorException) throw;
-                throw new ServiceException(ex.Message, ex);
-            }
         }
     }
 }

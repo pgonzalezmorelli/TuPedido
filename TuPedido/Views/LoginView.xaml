@@ -6,15 +6,21 @@
              xmlns:ext="clr-namespace:TuPedido.Extensions;assembly=TuPedido"
              xmlns:viewModelBase="clr-namespace:TuPedido.ViewModels;assembly=TuPedido"
              viewModelBase:ViewModelAutoWire.AutoWireViewModel="true"
-             BackgroundColor="{StaticResource BackgroundColor}">
+             BackgroundColor="{StaticResource BackgroundColor}"
+             ControlTemplate="{StaticResource PageTemplate}">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS" Value="20, 40, 20, 20" />
             <On Platform="Android, WinPhone, Windows" Value="20" />
         </OnPlatform>
     </ContentPage.Padding>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ext:PageResources />
+            </ResourceDictionary.MergedDictionaries>
+            
             <ext:InvertBoolConverter x:Key="invertBool" />
 
             <Style x:Key="MainGrid" TargetType="Grid">
@@ -74,7 +80,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Frame  
+            <Frame
                 Grid.Row="0" 
                 Grid.Column="0"
                 Style="{StaticResource Banner}">
@@ -89,7 +95,7 @@
                 Grid.Row="1" 
                 Grid.Column="0" 
                 Style="{StaticResource LoginPanel}"
-                IsVisible="{Binding IsBusy, Converter={StaticResource invertBool}}" >
+                IsEnabled="{Binding IsBusy, Converter={StaticResource invertBool}}" >
                 <syncfusion:SfAutoComplete
                     x:Name="autocomplete"
                     AutoCompleteMode="SuggestAppend"
@@ -103,16 +109,7 @@
                     Style="{StaticResource LoginButton}"
                     Text="Ingresar" 
                     Command="{Binding LoginCommand}" />
-                <Label 
-                    Style="{StaticResource ErrorLabel}" 
-                    Text="{Binding ErrorMessage}" />
             </StackLayout>
-            <ActivityIndicator 
-                Grid.Row="1" 
-                Grid.Column="0"
-                Style="{StaticResource Loader}"
-                IsVisible="{Binding IsBusy}" 
-                IsRunning="{Binding IsBusy}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
