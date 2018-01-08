@@ -1,8 +1,10 @@
-﻿namespace TuPedido.ViewModels
+﻿using TuPedido.Services;
+
+namespace TuPedido.ViewModels
 {
     public class OrderDetailViewModel : ViewModelBase
     {
-        public OrderDetailViewModel()
+        public OrderDetailViewModel() : base(null)
         {
         }
     }

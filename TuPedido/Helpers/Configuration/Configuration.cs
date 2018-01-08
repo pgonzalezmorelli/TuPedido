@@ -16,5 +16,11 @@
         {
             ConnectionString = "tupedido_db.db3",
         };
+        public DropboxConfig Dropbox => new DropboxConfig
+        {
+            AccessToken = "bPPNAG-RyBAAAAAAAAAAIv1Bi2FvZurEGSXcdYoIVFMzHxD4BVYwi7g2IvSxl6Lp",
+            FileName = "/Pedidos.xlsx",
+            DateTimeFormat = "M/d/yyyy h:mm:ss tt"
+        };
     }
 }

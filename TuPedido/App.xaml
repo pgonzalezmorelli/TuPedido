@@ -10,6 +10,53 @@
             <Color x:Key="BackgroundColor">#cacfd3</Color>
             <Color x:Key="ErrorTextColor">IndianRed</Color>
 
+            <OnPlatform x:TypeArguments="x:String" x:Key="BillyOhio">
+                <On Platform="iOS" Value="fonts/BillyOhio" />
+                <On Platform="Android" Value="fonts/BillyOhio.ttf#BillyOhio" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="AppFont">
+                <On Platform="iOS" Value="fonts/Exo2-Regular" />
+                <On Platform="Android" Value="fonts/Exo2-Regular.otf#Exo2-Regular" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="AppFontBold">
+                <On Platform="iOS" Value="fonts/Exo2-Bold" />
+                <On Platform="Android" Value="fonts/Exo2-Bold.otf#Exo2-Bold" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="AppFontItalic">
+                <On Platform="iOS" Value="fonts/Exo2-Italic" />
+                <On Platform="Android" Value="fonts/Exo2-Italic.otf#Exo2-Italic" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="AppFontBoldItalic">
+                <On Platform="iOS" Value="fonts/Exo2-BoldItalic" />
+                <On Platform="Android" Value="fonts/Exo2-BoldItalic.otf#Exo2-BoldItalic" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="AppFontThin">
+                <On Platform="iOS" Value="fonts/Exo2-Thin" />
+                <On Platform="Android" Value="fonts/Exo2-Thin.otf#Exo2-Thin" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="AppFontThinItalic">
+                <On Platform="iOS" Value="fonts/Exo2-ThinItalic" />
+                <On Platform="Android" Value="fonts/Exo2-ThinItalic.otf#Exo2-ThinItalic" />
+            </OnPlatform>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource AppFont}" />
+            </Style>
+
             <Style x:Key="Title" TargetType="Label">
                 <Setter Property="FontSize" Value="Large" />
             </Style>
@@ -17,6 +64,11 @@
             <Style x:Key="Error" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource ErrorTextColor}" />
                 <Setter Property="FontSize" Value="Medium" />
+            </Style>
+
+            <Style x:Key="Loader" TargetType="ActivityIndicator">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="Color" Value="{StaticResource PrimaryColor}" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>
