@@ -12,7 +12,6 @@
             AndroidAppName = "TuPedido-1",
             iOSAppOwner = "pablo.gonzalez-1",
             AndriodAppOwner = "pablo.gonzalez-1",
-            iOSSenderId = "",
             AndroidSenderId = "1508873952"
         };
         public EndpointsConfig Endpoints => new EndpointsConfig

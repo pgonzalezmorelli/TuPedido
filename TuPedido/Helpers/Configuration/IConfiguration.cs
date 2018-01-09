@@ -18,7 +18,6 @@
         public string AndriodAppOwner { get; set; }
         public string iOSAppName { get; set; }
         public string AndroidAppName { get; set; }
-        public string iOSSenderId { get; set; }
         public string AndroidSenderId { get; set; }
     }
 

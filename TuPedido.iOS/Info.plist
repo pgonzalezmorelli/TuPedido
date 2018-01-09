@@ -61,5 +61,9 @@
 		<string>fonts/Exo2-Thin.otf</string>
 		<string>fonts/Exo2-ThinItalic.otf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>
