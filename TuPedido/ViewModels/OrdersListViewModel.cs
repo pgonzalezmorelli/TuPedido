@@ -16,6 +16,7 @@ namespace TuPedido.ViewModels
         #region Attributes & Properties
 
         private readonly IOrderManager orderManager;
+        private readonly INotificationManager notificationManager;
         private ObservableCollection<OrderGrouping> orders;
 
         public ObservableCollection<OrderGrouping> Orders { set { SetPropertyValue(ref orders, value); } get { return orders; } }
@@ -25,9 +26,11 @@ namespace TuPedido.ViewModels
 
         #endregion
 
-        public OrdersListViewModel(INavigationService navigationService, IOrderManager orderManager) : base(navigationService)
+        public OrdersListViewModel(INavigationService navigationService, IOrderManager orderManager, INotificationManager notificationManager) : base(navigationService)
         {
             this.orderManager = orderManager;
+            this.notificationManager = notificationManager;
+
             ViewDetailCommand = new Command<Order>(async (Order item) => await ViewDetailAsync(item));
             NotifyCommand = new Command<Order>(async (Order item) => await NotifyAsync(item));
             LoadCommand = new Command(async () => await LoadOrdersAsync());
@@ -66,10 +69,7 @@ namespace TuPedido.ViewModels
 
         private Task NotifyAsync(Order item)
         {
-            return TryExecute(async () =>
-            {
-                await navigationService.NavigateToAsync(new OrderDetailView());
-            });
+            return TryExecute(() => notificationManager.Notify(item));
         }
     }
 }

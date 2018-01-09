@@ -20,7 +20,7 @@ namespace TuPedido
             Register( new Database<User>(Resolve<IFileHelper>(), Resolve<IConfiguration>()), typeof(IDatabase<User>) );
             Register( new DropboxServiceClient(Resolve<IConfiguration>()), typeof(IDropboxServiceClient) );
             Register( new ExcelHelper(Resolve<IConfiguration>()), typeof(IExcelHelper) );
-
+            
             Register( new UserRepository(Resolve<IDatabase<User>>()), typeof(IUserRepository) );
             Register( new UserService(Resolve<IRestClient>(), Resolve<IConfiguration>()), typeof(IUserService) );
             Register( new UserManager(Resolve<IUserService>(), Resolve<IUserRepository>()), typeof(IUserManager) );
@@ -28,7 +28,9 @@ namespace TuPedido
 
             Register( new OrderService(Resolve<IDropboxServiceClient>(), Resolve<IExcelHelper>(), Resolve<IConfiguration>()), typeof(IOrderService) );
             Register( new OrderManager(Resolve<IOrderService>()), typeof(IOrderManager) );
-            Register( new OrdersListViewModel(Resolve<INavigationService>(), Resolve<IOrderManager>()), typeof(OrdersListViewModel) );
+            Register( new NotificationService(Resolve<IRestClient>(), Resolve<IConfiguration>()), typeof(INotificationService) );
+            Register( new NotificationManager(Resolve<INotificationService>()), typeof(INotificationManager));
+            Register( new OrdersListViewModel(Resolve<INavigationService>(), Resolve<IOrderManager>(), Resolve<INotificationManager>()), typeof(OrdersListViewModel) );
 
             Register( new OrderDetailViewModel(), typeof(OrderDetailViewModel) );
         }

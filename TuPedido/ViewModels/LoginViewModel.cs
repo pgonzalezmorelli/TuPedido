@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AppCenter;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TuPedido.Helpers;
@@ -50,6 +51,7 @@ namespace TuPedido.ViewModels
             {
                 ValidationHelper.Check(SelectedUser != null, "Selecciona un usuario de la lista");
 
+                SelectedUser.DeviceId = await AppCenter.GetInstallIdAsync();
                 await userManager.Login(SelectedUser);
 
                 await navigationService.NavigateToAsync(new Views.OrdersListView());

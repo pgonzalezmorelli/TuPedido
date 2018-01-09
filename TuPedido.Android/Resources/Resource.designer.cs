@@ -26,6 +26,7 @@ namespace TuPedido.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Microsoft.AppCenter.Push.Android.Resource.String.library_name = global::TuPedido.Droid.Resource.String.library_name;
 			global::Splat.Resource.String.library_name = global::TuPedido.Droid.Resource.String.library_name;
 			global::Com.Syncfusion.Autocomplete.Resource.Attribute.layoutManager = global::TuPedido.Droid.Resource.Attribute.layoutManager;
 			global::Com.Syncfusion.Autocomplete.Resource.Attribute.reverseLayout = global::TuPedido.Droid.Resource.Attribute.reverseLayout;

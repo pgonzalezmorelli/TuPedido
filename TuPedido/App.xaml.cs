@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Push;
 using System.Threading.Tasks;
 using TuPedido.Helpers;
 using TuPedido.Managers;
@@ -46,7 +47,8 @@ namespace TuPedido
                 config.AppCenter.AndroidSecretKey, 
                 config.AppCenter.UwpSecretKey),
                 typeof(Analytics), 
-                typeof(Crashes));
+                typeof(Crashes),
+                typeof(Push));
         }
 
         private void Initialize()
