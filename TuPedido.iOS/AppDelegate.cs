@@ -32,6 +32,7 @@ namespace TuPedido.iOS
         private void ResolveDependencies()
         {
             DependencyContainer.Register(new Helpers.FileHelper(), typeof(TuPedido.Helpers.IFileHelper));
+            DependencyContainer.Register(new Helpers.StatusBarHelper(), typeof(TuPedido.Helpers.IStatusBar));
             DependencyContainer.RegisterDependencies();
         }
     }

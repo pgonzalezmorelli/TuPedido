@@ -58,8 +58,7 @@ namespace TuPedido
                 var userManager = DependencyContainer.Resolve<IUserManager>();
                 CurrentUser = await userManager.GetCurrentUser();
 
-                var navigation = DependencyContainer.Resolve<INavigationService>();
-                await navigation.InitializeAsync();
+                MainPage = new Views.NavigationView(new Views.SplashScreen());
             }).Wait();
         }
     }
