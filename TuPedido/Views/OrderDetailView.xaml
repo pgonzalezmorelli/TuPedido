@@ -5,10 +5,24 @@
              xmlns:viewModelBase="clr-namespace:TuPedido.ViewModels;assembly=TuPedido"
              viewModelBase:ViewModelAutoWire.AutoWireViewModel="true"
              xmlns:ext="clr-namespace:TuPedido.Extensions"
-             x:Class="TuPedido.Views.OrderDetailView">
+             x:Class="TuPedido.Views.OrderDetailView"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             ControlTemplate="{StaticResource PageTemplate}">
 
-    <Label Text="Detail Page!" 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ext:PageResources />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+    
+        <Label Text="Detail Page!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
+        
+    </ContentPage.Content>
     
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using TuPedido.Helpers;
 using TuPedido.Models;
@@ -20,9 +21,9 @@ namespace TuPedido.Services
             this.configuration = configuration;
         }
 
-        public Task<Order> GetOrderAsync(Guid id)
+        public async Task<Order> GetOrderAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return (await GetOrdersAsync()).FirstOrDefault(o => o.Id == id);
         }
 
         public async Task<IEnumerable<Order>> GetOrdersAsync()

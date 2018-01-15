@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TuPedido.Models;
 using TuPedido.Services;
@@ -12,6 +13,11 @@ namespace TuPedido.Managers
         public OrderManager(IOrderService orderService)
         {
             this.orderService = orderService;
+        }
+
+        public Task<Order> GetOrderAsync(Guid id)
+        {
+            return orderService.GetOrderAsync(id);
         }
 
         public Task<IEnumerable<Order>> GetOrdersAsync()

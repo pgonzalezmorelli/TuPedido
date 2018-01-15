@@ -9,7 +9,7 @@
              x:Name="OrdersListView"
              BackgroundColor="{StaticResource BackgroundColor}"
              ControlTemplate="{StaticResource PageTemplate}"
-             Padding="20">
+             Padding="0,1">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -50,7 +50,7 @@
             <!-- Pending item -->
             <Style x:Key="Item" TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="#959595" />
-                <Setter Property="Padding" Value="5" />
+                <Setter Property="Padding" Value="10,5" />
             </Style>
 
             <Style x:Key="ItemLabel" TargetType="Label">
