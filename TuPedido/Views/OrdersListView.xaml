@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TuPedido"
@@ -9,7 +9,7 @@
              x:Name="OrdersListView"
              BackgroundColor="{StaticResource BackgroundColor}"
              ControlTemplate="{StaticResource PageTemplate}"
-             Padding="0,1">
+             Padding="0">
 
     <ContentPage.Resources>
         <ResourceDictionary>

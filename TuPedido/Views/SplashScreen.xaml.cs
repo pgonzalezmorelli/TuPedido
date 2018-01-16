@@ -15,7 +15,7 @@ namespace TuPedido.Views
             this.InitializeToolbar(false);
 
             var statusBar = DependencyContainer.Resolve<IStatusBar>();
-            statusBar.Hide();
+            Device.BeginInvokeOnMainThread(statusBar.Hide);
         }
 
         protected override async void OnAppearing()
@@ -37,7 +37,7 @@ namespace TuPedido.Views
             await navigationService.InitializeAsync();
 
             var statusBar = DependencyContainer.Resolve<IStatusBar>();
-            statusBar.Show();
+            Device.BeginInvokeOnMainThread(statusBar.Show);
         }
     }
 }
