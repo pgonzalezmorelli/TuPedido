@@ -105,12 +105,10 @@
     <BundleResource Include="Resources\fonts\Exo2-Regular.otf" />
     <BundleResource Include="Resources\fonts\Exo2-Thin.otf" />
     <BundleResource Include="Resources\fonts\Exo2-ThinItalic.otf" />
-    <BundleResource Include="Resources\splashscreen-568h%402x.png" />
-    <BundleResource Include="Resources\splashscreen-667h%402x.png" />
-    <BundleResource Include="Resources\splashscreen-736h%403x.png" />
-    <BundleResource Include="Resources\splashscreen-812h%403x.png" />
     <BundleResource Include="Resources\splashscreen.png" />
     <BundleResource Include="Resources\splashscreen%402x.png" />
+    <BundleResource Include="Resources\splashscreen%403x.png" />
+    <BundleResource Include="Resources\navLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

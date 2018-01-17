@@ -109,6 +109,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\navLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml">
@@ -124,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TuPedido\TuPedido.csproj">
-      <Project>{F467CE99-F97A-4BE5-B3B7-9BC4669339EE}</Project>
+      <Project>{8F512DEC-058F-42B2-8AEF-415485E5AB31}</Project>
       <Name>TuPedido</Name>
     </ProjectReference>
   </ItemGroup>

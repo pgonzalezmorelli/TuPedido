@@ -27,7 +27,9 @@
                 <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="FontSize" Value="16" />
+                <Setter Property="HeightRequest" Value="30" />
             </Style>
 
             <Style x:Key="NoItems" TargetType="Label">
@@ -39,18 +41,23 @@
             </Style>
 
             <DataTemplate x:Key="OrdersHeader">
-                <ViewCell>
-                    <StackLayout>
-                        <Label Text="{Binding Title}" Style="{StaticResource ItemGroupHeader}"/>
-                        <Label Text="{Binding Message}" IsVisible="{Binding IsEmpty}" Style="{StaticResource NoItems}" />
-                    </StackLayout>
+                <ViewCell BindingContextChanged="Handle_BindingContextChanged">
+                    <Grid RowSpacing="0"> 
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="GroupTitle" Grid.Row="0" Text="{Binding Title}" Style="{StaticResource ItemGroupHeader}" />
+                        <Label x:Name="GroupEmpty" Grid.Row="1" IsVisible="{Binding IsEmpty}" Text="{Binding Message}" Style="{StaticResource NoItems}" />
+                    </Grid>
                 </ViewCell>
             </DataTemplate>
 
             <!-- Pending item -->
             <Style x:Key="Item" TargetType="Grid">
                 <Setter Property="BackgroundColor" Value="#959595" />
-                <Setter Property="Padding" Value="10,5" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="Margin" Value="2,2,2,0" />
             </Style>
 
             <Style x:Key="ItemLabel" TargetType="Label">
@@ -223,10 +230,11 @@
                 RefreshCommand="{Binding LoadCommand}"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                SeparatorColor="{StaticResource BackgroundColor}"
+                SeparatorVisibility="None"
                 IsGroupingEnabled="True"
                 HasUnevenRows="true"
-                IsVisible="{Binding IsBusy, Converter={StaticResource InvertBool}}">
+                IsVisible="{Binding IsBusy, Converter={StaticResource InvertBool}}"
+                BackgroundColor="{StaticResource BackgroundColor}">
         </ListView>
     </ContentPage.Content>
 </ContentPage>

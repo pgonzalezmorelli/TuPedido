@@ -24,16 +24,16 @@ namespace TuPedido.Views
 
             for (int i = 0; i < 3; i++)
             {
-                await SplashImage.ScaleTo(1.2, 800, Easing.Linear);
+                await SplashImage.ScaleTo(1.15, 800, Easing.Linear);
                 await SplashImage.ScaleTo(1, 800, Easing.Linear);
             };
 
-            var navigationService = DependencyContainer.Resolve<INavigationService>();
             await Task.WhenAll(
                 SplashImage.ScaleTo(5, 1200, Easing.Linear),
                 SplashGrid.FadeTo(0, 1200)
             );
 
+			var navigationService = DependencyContainer.Resolve<INavigationService>();
             await navigationService.InitializeAsync();
 
             var statusBar = DependencyContainer.Resolve<IStatusBar>();
