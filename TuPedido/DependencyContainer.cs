@@ -32,7 +32,7 @@ namespace TuPedido
             Register( new NotificationManager(Resolve<INotificationService>()), typeof(INotificationManager));
             Register( new OrdersListViewModel(Resolve<INavigationService>(), Resolve<IOrderManager>(), Resolve<INotificationManager>()), typeof(OrdersListViewModel) );
 
-            Register( new OrderDetailViewModel(), typeof(OrderDetailViewModel) );
+            Register( new OrderDetailViewModel(Resolve<IOrderManager>()), typeof(OrderDetailViewModel) );
         }
 
         public static void Register(object value, Type type)

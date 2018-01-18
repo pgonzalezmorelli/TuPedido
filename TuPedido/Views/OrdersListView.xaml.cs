@@ -26,5 +26,14 @@ namespace TuPedido.Views
 
             await this.DisplayAlert(e.Title, summary, "chausis");
         }
+
+        //TODO: Eliminar este código cuando se solucione el issue https://bugzilla.xamarin.com/show_bug.cgi?id=45773
+        void Handle_BindingContextChanged(object sender, System.EventArgs e)
+        {
+            var cell = (ViewCell)sender;
+            var title = cell.View.FindByName<Label>("GroupTitle");
+            var empty = cell.View.FindByName<Label>("GroupEmpty");
+            cell.Height = title.HeightRequest + (empty.IsVisible ? empty.HeightRequest : 0);
+        }
     }
 }

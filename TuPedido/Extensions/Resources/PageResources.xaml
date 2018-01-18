@@ -24,7 +24,7 @@
     <Style x:Key="OuterErrorBox" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="#ebcccc" />
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="Margin" Value="0,0,0,10" />
+        <Setter Property="Margin" Value="0,0,0,1" />
         <Setter Property="Padding" Value="1" />
     </Style>
 

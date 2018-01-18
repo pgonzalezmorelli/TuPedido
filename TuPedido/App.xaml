@@ -1,47 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TuPedido.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="PrimaryColor">#21282f</Color>
+            <Color x:Key="PrimaryColor">#29313c</Color>
             <Color x:Key="SecondaryColor">#1ed760</Color>
             <Color x:Key="PrimaryTextColor">White</Color>
             <Color x:Key="BackgroundColor">#cacfd3</Color>
             <Color x:Key="ErrorTextColor">IndianRed</Color>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="BillyOhio">
-                <On Platform="iOS" Value="fonts/BillyOhio" />
+                <On Platform="iOS" Value="BillyOhio" />
                 <On Platform="Android" Value="fonts/BillyOhio.ttf#BillyOhio" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="AppFont">
-                <On Platform="iOS" Value="fonts/Exo2-Regular" />
+                <On Platform="iOS" Value="Exo2-Regular" />
                 <On Platform="Android" Value="fonts/Exo2-Regular.otf#Exo2-Regular" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="AppFontBold">
-                <On Platform="iOS" Value="fonts/Exo2-Bold" />
+                <On Platform="iOS" Value="Exo2-Bold" />
                 <On Platform="Android" Value="fonts/Exo2-Bold.otf#Exo2-Bold" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="AppFontItalic">
-                <On Platform="iOS" Value="fonts/Exo2-Italic" />
+                <On Platform="iOS" Value="Exo2-Italic" />
                 <On Platform="Android" Value="fonts/Exo2-Italic.otf#Exo2-Italic" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="AppFontBoldItalic">
-                <On Platform="iOS" Value="fonts/Exo2-BoldItalic" />
+                <On Platform="iOS" Value="Exo2-BoldItalic" />
                 <On Platform="Android" Value="fonts/Exo2-BoldItalic.otf#Exo2-BoldItalic" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="AppFontThin">
-                <On Platform="iOS" Value="fonts/Exo2-Thin" />
+                <On Platform="iOS" Value="Exo2-Thin" />
                 <On Platform="Android" Value="fonts/Exo2-Thin.otf#Exo2-Thin" />
             </OnPlatform>
 
             <OnPlatform x:TypeArguments="x:String" x:Key="AppFontThinItalic">
-                <On Platform="iOS" Value="fonts/Exo2-ThinItalic" />
+                <On Platform="iOS" Value="Exo2-ThinItalic" />
                 <On Platform="Android" Value="fonts/Exo2-ThinItalic.otf#Exo2-ThinItalic" />
             </OnPlatform>
 

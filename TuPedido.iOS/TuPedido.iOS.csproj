@@ -105,6 +105,10 @@
     <BundleResource Include="Resources\fonts\Exo2-Regular.otf" />
     <BundleResource Include="Resources\fonts\Exo2-Thin.otf" />
     <BundleResource Include="Resources\fonts\Exo2-ThinItalic.otf" />
+    <BundleResource Include="Resources\splashscreen.png" />
+    <BundleResource Include="Resources\splashscreen%402x.png" />
+    <BundleResource Include="Resources\splashscreen%403x.png" />
+    <BundleResource Include="Resources\navLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -118,7 +122,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\TuPedido\TuPedido.csproj">
-      <Project>{F467CE99-F97A-4BE5-B3B7-9BC4669339EE}</Project>
+      <Project>{8F512DEC-058F-42B2-8AEF-415485E5AB31}</Project>
       <Name>TuPedido</Name>
     </ProjectReference>
   </ItemGroup>
@@ -200,11 +204,15 @@
     <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\splashscreen_640x1136.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\splashscreen_640x960.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>
