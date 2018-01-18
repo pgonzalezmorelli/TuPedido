@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using TuPedido;
 using TuPedido.Managers;
 using TuPedido.Services;
@@ -15,16 +16,16 @@ namespace Xamarin.Forms
             }
             else
             {
+                var userNames = App.CurrentUser.Name.Split(new char[] { ' ' });
+                var displayName = (userNames.Length > 2 ? $"{userNames[0]} {userNames[1]}" : userNames[0]) + $" {userNames.Last().Substring(0,1)}.";
+
+                page.ToolbarItems.Add(new ToolbarItem { Text = displayName });
                 page.ToolbarItems.Add(new ToolbarItem
                 {
-                    Icon = "logo.png"
-                });
-                page.ToolbarItems.Add(new ToolbarItem
-                {
-                    Text = "Logout",
+                    Icon = "logout.png",
                     Command = new Command(async () => await Logout())
                 });
-                page.Title = App.CurrentUser.Name;
+                NavigationPage.SetTitleIcon(page, "navLogo.png");
             }
         }
 

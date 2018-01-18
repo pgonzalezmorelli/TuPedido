@@ -3,13 +3,13 @@ using Xamarin.Forms;
 
 namespace TuPedido.Services
 {
-    public class NavigationService<TPublicHome, TPrivateHome> : INavigationService
+    public class NavigationService<TSplash, TPublicHome, TPrivateHome> : INavigationService
         where TPublicHome : Page, new()
         where TPrivateHome : Page, new()
+        where TSplash : Page, new()
     {
         private readonly bool animateNavigation = false;
         private INavigation navigation;
-        private Page currentPage;
 
         public Task InitializeAsync()
         {
@@ -42,7 +42,8 @@ namespace TuPedido.Services
                         page = new TPrivateHome();
                     }
 
-                    if (App.Current.MainPage as NavigationPage == null || page is TPublicHome)
+                    var currentPage = (App.Current.MainPage as Views.NavigationView).CurrentPage;
+                    if (page is TPublicHome && !(currentPage is TSplash))
                     {
                         App.Current.MainPage = new Views.NavigationView(page);
                         navigation = App.Current.MainPage.Navigation;
@@ -50,16 +51,14 @@ namespace TuPedido.Services
                     else
                     {
                         await navigation.PushAsync(page, animateNavigation);
+                        if (currentPage is TSplash || currentPage is TPublicHome)
+                        {
+                            navigation.RemovePage(currentPage);
+                        }
                     }
-                    
-                    var viewModel = page.BindingContext as ViewModels.ViewModelBase;
-                    await viewModel?.InitializeAsync(navigationData);
 
-                    if (currentPage is TPublicHome)
-                    {
-                        navigation.RemovePage(currentPage);
-                    }
-                    currentPage = page;
+                    var viewModel = page.BindingContext as ViewModels.ViewModelBase;
+                    if (viewModel != null) await viewModel.InitializeAsync(navigationData);
                 });
             });
         }
@@ -70,8 +69,7 @@ namespace TuPedido.Services
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var mainPage = App.Current.MainPage as NavigationPage;
-                    await mainPage?.Navigation.PopAsync(animateNavigation);
+                    await navigation?.PopAsync(animateNavigation);
                 });
             });
         }

@@ -16,6 +16,7 @@ namespace TuPedido.ViewModels
         #region Attributes & Properties
 
         private readonly IOrderManager orderManager;
+        private readonly INotificationManager notificationManager;
         private ObservableCollection<OrderGrouping> orders;
 
         public ObservableCollection<OrderGrouping> Orders { set { SetPropertyValue(ref orders, value); } get { return orders; } }
@@ -25,9 +26,11 @@ namespace TuPedido.ViewModels
 
         #endregion
 
-        public OrdersListViewModel(INavigationService navigationService, IOrderManager orderManager) : base(navigationService)
+        public OrdersListViewModel(INavigationService navigationService, IOrderManager orderManager, INotificationManager notificationManager) : base(navigationService)
         {
             this.orderManager = orderManager;
+            this.notificationManager = notificationManager;
+
             ViewDetailCommand = new Command<Order>(async (Order item) => await ViewDetailAsync(item));
             NotifyCommand = new Command<Order>(async (Order item) => await NotifyAsync(item));
             LoadCommand = new Command(async () => await LoadOrdersAsync());
@@ -40,9 +43,14 @@ namespace TuPedido.ViewModels
 
         private Task LoadOrdersAsync()
         {
-            return TryExecute(async () =>
+            return Task.Run(async() => 
             {
-                var orders = await orderManager.GetOrdersAsync();
+                IEnumerable<Order> orders = new List<Order>();
+                await TryExecute(async () =>
+                {
+                    orders = await orderManager.GetOrdersAsync();
+                });
+
                 Orders = new ObservableCollection<OrderGrouping>(new List<OrderGrouping>
                 {
                     new OrderGrouping("Pendientes", orders.Where(o => !o.Received).OrderBy(o => o.Date), "No existen pedidos pendientes"),
@@ -61,10 +69,7 @@ namespace TuPedido.ViewModels
 
         private Task NotifyAsync(Order item)
         {
-            return TryExecute(async () =>
-            {
-                await navigationService.NavigateToAsync(new OrderDetailView());
-            });
+            return TryExecute(() => notificationManager.Notify(item));
         }
     }
 }

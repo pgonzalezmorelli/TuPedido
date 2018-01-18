@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:ext="clr-namespace:TuPedido.Extensions"
+                    x:Class="TuPedido.Extensions.PageResources">
+
+    <ext:ValueConverterGroup x:Key="NotEmptyString">
+        <ext:EmptyStringToBoolConverter />
+        <ext:InvertBoolConverter />
+    </ext:ValueConverterGroup>
+
+    <Style x:Key="ContentContainer" TargetType="Grid">
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="RowSpacing" Value="0" />
+        <Setter Property="ColumnSpacing" Value="0" />
+    </Style>
+
+    <Style x:Key="ErrorMessage" TargetType="Label">
+        <Setter Property="TextColor" Value="#a94442" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="OuterErrorBox" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#ebcccc" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Margin" Value="0,0,0,1" />
+        <Setter Property="Padding" Value="1" />
+    </Style>
+
+    <Style x:Key="ErrorBox" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="#f2dede" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+    <ControlTemplate x:Key="PageTemplate">
+        <Grid Style="{StaticResource ContentContainer}">
+            <StackLayout Grid.Row="0">
+                <Frame Style="{StaticResource OuterErrorBox}" IsVisible="{TemplateBinding BindingContext.ErrorMessage, Converter={StaticResource NotEmptyString}}">
+                    <Frame Style="{StaticResource ErrorBox}">
+                        <Label 
+                            Style="{StaticResource ErrorMessage}"
+                            Text="{TemplateBinding BindingContext.ErrorMessage}" />
+                    </Frame>
+                </Frame>
+                <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+            <ActivityIndicator 
+                Grid.Row="0" 
+                Style="{StaticResource Loader}"
+                IsVisible="{TemplateBinding BindingContext.IsBusy}" 
+                IsRunning="{TemplateBinding BindingContext.IsBusy}" />
+        </Grid>
+    </ControlTemplate>
+    
+</ResourceDictionary>
