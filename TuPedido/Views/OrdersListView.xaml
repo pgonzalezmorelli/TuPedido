@@ -17,7 +17,6 @@
                 <ext:PageResources />
             </ResourceDictionary.MergedDictionaries>
 
-            <ext:InvertBoolConverter x:Key="InvertBool" />
             <ext:DateToStringConverter x:Key="DateToString" />
             <ext:NullableToStringConverter x:Key="NullableToString" />
 
@@ -192,6 +191,9 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BindingContext.ViewDetailCommand, Source={x:Reference OrdersListView}}" CommandParameter="{Binding .}" />
+                            </Grid.GestureRecognizers>
 
                             <Label Grid.Row="0" Text="{Binding Owner}" Style="{StaticResource Owner}"/>
                             <Label Grid.Row="1" Text="{Binding Service}" Style="{StaticResource ReceivedService}"/>
@@ -233,7 +235,7 @@
                 SeparatorVisibility="None"
                 IsGroupingEnabled="True"
                 HasUnevenRows="true"
-                IsVisible="{Binding IsBusy, Converter={StaticResource InvertBool}}"
+                IsVisible="{Binding IsVisible}"
                 BackgroundColor="{StaticResource BackgroundColor}">
         </ListView>
     </ContentPage.Content>

@@ -8,7 +8,7 @@ namespace TuPedido.Services
         where TPrivateHome : Page, new()
         where TSplash : Page, new()
     {
-        private readonly bool animateNavigation = false;
+        private readonly bool animateNavigation = true;
         private INavigation navigation;
 
         public Task InitializeAsync()
@@ -42,6 +42,9 @@ namespace TuPedido.Services
                         page = new TPrivateHome();
                     }
 
+                    var viewModel = page.BindingContext as ViewModels.ViewModelBase;
+                    if (viewModel != null) viewModel.IsVisible = false;
+
                     var currentPage = (App.Current.MainPage as Views.NavigationView).CurrentPage;
                     if (page is TPublicHome && !(currentPage is TSplash))
                     {
@@ -57,7 +60,6 @@ namespace TuPedido.Services
                         }
                     }
 
-                    var viewModel = page.BindingContext as ViewModels.ViewModelBase;
                     if (viewModel != null) await viewModel.InitializeAsync(navigationData);
                 });
             });

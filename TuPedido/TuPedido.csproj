@@ -14,9 +14,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="Splat" Version="2.0.0" />
     <PackageReference Include="sqlite-net-pcl" Version="1.4.118" />
-    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="15.4.0.17" />
     <PackageReference Include="Syncfusion.Xamarin.XlsIO" Version="15.4.0.20" />
-    <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
+    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="15.4.0.20" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
   </ItemGroup>
 
   <ItemGroup>

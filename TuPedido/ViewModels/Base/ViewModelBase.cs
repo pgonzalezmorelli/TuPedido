@@ -14,9 +14,11 @@ namespace TuPedido.ViewModels
 
         protected readonly INavigationService navigationService;
         private bool isBusy;
+        private bool isVisible;
         private string errorMessage;
         
         public bool IsBusy { set { SetPropertyValue(ref isBusy, value); } get { return isBusy; } }
+        public bool IsVisible { set { SetPropertyValue(ref isVisible, value); } get { return isVisible; } }
         public string ErrorMessage { set { SetPropertyValue(ref errorMessage, value); } get { return errorMessage; } }
 
         #endregion

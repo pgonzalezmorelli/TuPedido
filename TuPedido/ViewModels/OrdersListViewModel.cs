@@ -43,19 +43,23 @@ namespace TuPedido.ViewModels
 
         private Task LoadOrdersAsync()
         {
+            IsVisible = false;
+
             return Task.Run(async() => 
             {
-                IEnumerable<Order> orders = new List<Order>();
+                IEnumerable<Order> allOrders = new List<Order>();
                 await TryExecute(async () =>
                 {
-                    orders = await orderManager.GetOrdersAsync();
+                    allOrders = await orderManager.GetOrdersAsync();
                 });
 
                 Orders = new ObservableCollection<OrderGrouping>(new List<OrderGrouping>
                 {
-                    new OrderGrouping("Pendientes", orders.Where(o => !o.Received).OrderBy(o => o.Date), "No existen pedidos pendientes"),
-                    new OrderGrouping("Recibidos", orders.Where(o => o.Received).OrderByDescending(o => o.ReceivedDate), "No existen pedidos recibidos"),
+                    new OrderGrouping("Pendientes", allOrders.Where(o => !o.Received).OrderBy(o => o.Date), "No existen pedidos pendientes"),
+                    new OrderGrouping("Recibidos", allOrders.Where(o => o.Received).OrderByDescending(o => o.ReceivedDate), "No existen pedidos recibidos"),
                 });
+
+                IsVisible = true;
             });
         }
 
@@ -63,7 +67,7 @@ namespace TuPedido.ViewModels
         {
             return TryExecute(async () =>
             {
-                await navigationService.NavigateToAsync(new OrderDetailView());
+                await navigationService.NavigateToAsync(new OrderDetailView(), item.Id);
             });
         }
 

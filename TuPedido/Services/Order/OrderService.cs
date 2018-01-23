@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using TuPedido.Helpers;
 using TuPedido.Models;
@@ -23,13 +22,14 @@ namespace TuPedido.Services
 
         public async Task<Order> GetOrderAsync(Guid id)
         {
-            return (await GetOrdersAsync()).FirstOrDefault(o => o.Id == id);
+            var bytes = await dropboxService.GetFileAsync(configuration.Dropbox.FileName);
+            return excelHelper.GetOrder(new MemoryStream(bytes), id);
         }
 
         public async Task<IEnumerable<Order>> GetOrdersAsync()
         {
             var bytes = await dropboxService.GetFileAsync(configuration.Dropbox.FileName);
-            return excelHelper.Parse(new MemoryStream(bytes));
+            return excelHelper.GetOrders(new MemoryStream(bytes));
         }
 
         public Task<Order> SaveOrderAsync(Order order)
