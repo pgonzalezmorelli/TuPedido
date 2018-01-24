@@ -9,6 +9,7 @@ namespace TuPedido.Models
         public string Service { get; set; }
         public Guid? DeviceId { get; set; }
         public int? EstimatedDelayMinutes { get; set; }
+        public string Comments { get; set; }
         public DateTime? NotificationDate { get; set; }
         public DateTime? ReceivedDate { get; set; }
         public bool Received => ReceivedDate.HasValue;

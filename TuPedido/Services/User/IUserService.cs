@@ -6,6 +6,8 @@ namespace TuPedido.Services
 {
     public interface IUserService
     {
-        Task<IEnumerable<User>> GetUsers();
+        Task<IEnumerable<User>> GetUsersAsync();
+
+        Task SaveUserAsync(User user);
     }
 }

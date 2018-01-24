@@ -9,23 +9,16 @@ namespace TuPedido.Helpers
 {
     public class ExcelHelper : IExcelHelper
     {
-        private readonly IConfiguration configuration;
-        
-        public ExcelHelper(IConfiguration configuration)
-        {
-            this.configuration = configuration;
-        }
-
         public IEnumerable<Order> GetOrders(Stream stream)
         {
-            return Parse(stream, workbook =>
+            return ReadExcel(stream, workbook =>
             {
-                var sheet = workbook.Worksheets[0];
+                var sheet = GetSheet<Order>(workbook);
 
                 var data = sheet.Rows
                                 .Skip(1)
                                 .TakeWhile(r => !string.IsNullOrEmpty(sheet[r.Row, 1].Value))
-                                .Select(usedRow => RowToOrder(sheet, usedRow.Row))
+                                .Select(usedRow => ReadOrder(sheet, usedRow.Row))
                                 .ToList();
 
                 return data;
@@ -34,21 +27,36 @@ namespace TuPedido.Helpers
 
         public Order GetOrder(Stream stream, Guid id)
         {
-            return Parse(stream, workbook => 
-            { 
-                var sheet = workbook.Worksheets[0];
+            return ReadExcel(stream, workbook =>
+            {
+                var sheet = GetSheet<Order>(workbook);
 
                 var data = (from usedRow in sheet.Rows
                             where usedRow.Row > 1
                             where TryParse(sheet[usedRow.Row, 1].Value, Guid.Parse) == id
-                            select RowToOrder(sheet, usedRow.Row))
+                            select ReadOrder(sheet, usedRow.Row))
                             .FirstOrDefault();
 
                 return data;
             });
         }
 
-        private T Parse<T>(Stream stream, Func<IWorkbook, T> parser)
+        public byte[] SaveUser(Stream stream, User user)
+        {
+            return WriteExcel(stream, workbook =>
+            {
+                var sheet = GetSheet<User>(workbook);
+
+                var existingUser = sheet.Rows.FirstOrDefault(r => sheet[r.Row, 1].Value.ToLowerInvariant() == user.Name.ToLowerInvariant());
+
+                var rowToWrite = existingUser != null ? existingUser.Row : sheet.Rows.Count() + 1;
+                WriteUser(sheet, rowToWrite, user);
+            });
+        }
+
+        #region Helpers
+
+        private T ReadExcel<T>(Stream stream, Func<IWorkbook, T> parser)
         {
             using (var engine = new ExcelEngine())
             {
@@ -69,8 +77,29 @@ namespace TuPedido.Helpers
             }
         }
 
-        private Order RowToOrder(IWorksheet sheet, int row)
+        private byte[] WriteExcel(Stream stream, Action<IWorkbook> transformation)
         {
+            return ReadExcel(stream, workbook =>
+            {
+                transformation(workbook);
+                return SaveChanges(stream, workbook);
+            });
+        }
+
+        private byte[] SaveChanges(Stream stream, IWorkbook workbook)
+        {
+            var streamToSave = new MemoryStream();
+            stream.CopyTo(streamToSave);
+            workbook.SaveAs(streamToSave);
+
+            return streamToSave.ToArray();
+        }
+
+        private Order ReadOrder(IWorksheet sheet, int row)
+        {
+            var comments = sheet[row, 6].Value;
+            var devicePlatform = sheet[row, 10].FormulaStringValue;
+
             return new Order
             {
                 Id = Guid.Parse(sheet[row, 1].Value),
@@ -78,11 +107,32 @@ namespace TuPedido.Helpers
                 Service = sheet[row, 3].Value,
                 Date = DateTime.Parse(sheet[row, 4].Value),
                 EstimatedDelayMinutes = TryParse(sheet[row, 5].Value, int.Parse),
-                ReceivedDate = TryParse(sheet[row, 6].Value, DateTime.Parse),
-                NotificationDate = TryParse(sheet[row, 7].Value, DateTime.Parse),
-                DeviceId = TryParse(sheet[row, 8].FormulaStringValue, Guid.Parse),
-                DevicePlatform = sheet[row, 9].FormulaStringValue
+                Comments = string.IsNullOrEmpty(comments) ? null : comments,
+                ReceivedDate = TryParse(sheet[row, 7].Value, DateTime.Parse),
+                NotificationDate = TryParse(sheet[row, 8].Value, DateTime.Parse),
+                DeviceId = TryParse(sheet[row, 9].FormulaStringValue, Guid.Parse),
+                DevicePlatform = string.IsNullOrEmpty(devicePlatform) ? null : devicePlatform
             };
+        }
+
+        private void WriteUser(IWorksheet sheet, int row, User user)
+        {
+            sheet[row, 1].Value = user.Name;
+            sheet[row, 2].Value = user.DeviceId.ToString();
+            sheet[row, 3].Value = user.DevicePlatform;
+        }
+
+        private IWorksheet GetSheet<T>(IWorkbook workbook)
+        {
+            if (typeof(T) == typeof(Order))
+            {
+                return workbook.Worksheets[0];
+            }
+            else if (typeof(T) == typeof(User))
+            {
+                return workbook.Worksheets[1];
+            }
+            throw new InvalidOperationException();
         }
 
         private T? TryParse<T>(string value, Func<string, T> parser)
@@ -91,5 +141,7 @@ namespace TuPedido.Helpers
             if (string.IsNullOrWhiteSpace(value)) return null;
             return parser(value);
         }
+
+        #endregion Helpers
     }
 }

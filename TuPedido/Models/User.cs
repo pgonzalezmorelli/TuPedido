@@ -7,5 +7,6 @@ namespace TuPedido.Models
         public string Name { get; set; }
         public bool IsExternal { get; set; }
         public Guid? DeviceId { get; set; }
+        public string DevicePlatform { get; set; }
     }
 }

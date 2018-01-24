@@ -32,7 +32,7 @@ namespace Xamarin.Forms
         private static async Task Logout()
         {
             var userManager = DependencyContainer.Resolve<IUserManager>();
-            await userManager.Logout();
+            await userManager.LogoutAsync();
 
             var navigationService = DependencyContainer.Resolve<INavigationService>();
             await navigationService.InitializeAsync();

@@ -9,9 +9,13 @@ namespace TuPedido.Managers
 {
     public class UserManager : IUserManager
     {
-        protected readonly IUserService userService;
-        protected readonly IUserRepository userRepository;
+        #region Attributes & Properties
+
+        private readonly IUserService userService;
+        private readonly IUserRepository userRepository;
         private User loggedUser;
+
+        #endregion Attributes & Properties
 
         public UserManager(IUserService userService, IUserRepository userRepository)
         {
@@ -19,28 +23,32 @@ namespace TuPedido.Managers
             this.userRepository = userRepository;
         }
 
-        public async Task<User> GetCurrentUser()
+        public async Task<User> GetCurrentUserAsync()
         {
             loggedUser = loggedUser ?? await userRepository.GetCurrentUser();
             return await Task.FromResult(loggedUser);
         }
 
-        public Task<IEnumerable<User>> GetUsers()
+        public Task<IEnumerable<User>> GetUsersAsync()
         {
-            return userService.GetUsers();
+            return userService.GetUsersAsync();
         }
 
-        public Task Login(User user)
+        public Task LoginAsync(User user)
         {
             ValidationHelper.Check(user != null, "User info is null");
             ValidationHelper.Check(!string.IsNullOrEmpty(user.Name), "Username is null or empty");
-            
-            var resultado = userRepository.AddUser(user);
+
+            var resultado = Task.WhenAll(
+                userRepository.AddUser(user),
+                userService.SaveUserAsync(user)
+            );
+
             App.CurrentUser = user;
             return resultado;
         }
 
-        public Task Logout()
+        public Task LogoutAsync()
         {
             ValidationHelper.Check(App.CurrentUser != null, "No one is logged in");
 

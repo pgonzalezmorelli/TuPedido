@@ -56,7 +56,7 @@ namespace TuPedido
             Task.Run(async () => 
             {
                 var userManager = DependencyContainer.Resolve<IUserManager>();
-                CurrentUser = await userManager.GetCurrentUser();
+                CurrentUser = await userManager.GetCurrentUserAsync();
 
                 MainPage = new Views.NavigationView(new Views.SplashScreen());
             }).Wait();

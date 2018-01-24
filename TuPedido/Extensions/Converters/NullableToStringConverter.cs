@@ -18,6 +18,9 @@ namespace TuPedido.Extensions
             if (value is int?)
                 return ((int?)value).HasValue ? $"{value.ToString()} minutos" : unavailable;
 
+            if (value is string)
+                return value;
+
             throw new InvalidOperationException("The target must be a datetime? or int?");
         }
 

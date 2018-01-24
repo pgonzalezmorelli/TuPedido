@@ -100,7 +100,7 @@
                 <Label Text="Comentarios:" />
             </ContentView>
             <ContentView Style="{StaticResource Value}" Grid.Row="4" Grid.Column="1">
-                <Label Text=""/>
+                <Label Text="{Binding Order.Comments, Converter={StaticResource NullableToString}}"/>
             </ContentView>
 
             <ContentView Style="{StaticResource Key}" Grid.Row="5" Grid.Column="0">

@@ -6,9 +6,9 @@ namespace TuPedido.Managers
 {
     public interface IUserManager
     {
-        Task<IEnumerable<User>> GetUsers();
-        Task<User> GetCurrentUser();
-        Task Login(User user);
-        Task Logout();
+        Task<IEnumerable<User>> GetUsersAsync();
+        Task<User> GetCurrentUserAsync();
+        Task LoginAsync(User user);
+        Task LogoutAsync();
     }
 }
